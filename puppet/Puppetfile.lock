@@ -1,0 +1,8 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    tylerwalts-jdk_oracle (1.4.0)
+
+DEPENDENCIES
+  tylerwalts-jdk_oracle (>= 0)
+
