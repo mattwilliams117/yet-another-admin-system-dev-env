@@ -1,19 +1,31 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com
   specs:
+    camptocamp-archive (0.8.1)
     maestrodev-wget (1.7.0)
+    puppetlabs-stdlib (4.8.0)
     tylerwalts-jdk_oracle (1.4.0)
 
 GIT
-  remote: https://github.com/maestrodev/puppet-maven.git
-  ref: v1.0.0
-  sha: c491f20e7ea3bf3abca370cdd102e57f7a0bacf1
+  remote: git://github.com/svigneux/puppet-eclipse.git
+  ref: master
+  sha: cb71c8452da86c759d7c87444868f7c3e7592b09
   specs:
-    maven (1.0.0)
-      maestrodev-wget (>= 0.0.1)
+    svigneux-eclipse (0.0.1)
+
+GIT
+  remote: https://github.com/maestrodev/puppet-maven.git
+  ref: v1.4.0
+  sha: ddeb7d342a40e3626820f21000a75714488c92f5
+  specs:
+    maven (1.4.0)
+      maestrodev-wget (>= 1.0.0)
 
 DEPENDENCIES
+  camptocamp-archive (>= 0)
   maestrodev-wget (>= 1.0.0)
   maven (>= 0)
+  puppetlabs-stdlib (>= 0)
+  svigneux-eclipse (>= 0)
   tylerwalts-jdk_oracle (>= 0)
 
