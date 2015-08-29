@@ -8,7 +8,7 @@ class { "jdk_oracle":
 }
 
 class { "maven::maven":
-  version => "3.3.2"
+  version => "3.3.3"
 }
 
 class { 'eclipse':
@@ -16,19 +16,8 @@ class { 'eclipse':
     release_name    => 'luna',
     service_release => 'R'
   } ->
-  # Puppet editor for eclipse
-  # class { 'eclipse::plugin::geppetto': method => 'p2_director', } # ->
-  # Eclipse egit
-  #class { 'eclipse::plugin::egit': method => 'p2_director', } ->
-  # Edit shell scripts from within eclipse
-  class { 'eclipse::plugin::shelled': method => 'p2_director', } ->
-  # # yaml editor for eclipse
-  #class { 'eclipse::plugin::yedit': method => 'p2_director', } ->
-  # # Markdown editor for eclipse
-  class { 'eclipse::plugin::markdown': method => 'p2_director', } # ->
-  # Ruby Editor for eclipse
-  #class { 'eclipse::plugin::dltk::ruby': } ->
-  #class { 'eclipse::plugin::colortheme': method => 'p2_director', }
+  class { 'eclipse::plugin::shelled': method => 'p2_director', } ->    # Puppet editor for eclipse
+  class { 'eclipse::plugin::markdown': method => 'p2_director', }      # Markdown editor for eclipse
   
   
 exec { 'fix-eclipse-memory1':
