@@ -16,5 +16,5 @@ mod "maven",
   :ref => 'v1.4.0'
 
 # Eclipse
-mod 'svigneux/eclipse',
-  :git => 'git://github.com/svigneux/puppet-eclipse.git'
+mod 'PennAssuranceSoftware/eclipse',
+  :git => 'https://github.com/PennAssuranceSoftware/puppet-eclipse.git'

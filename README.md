@@ -5,7 +5,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * Java Decompiler
 * Eclipse (with plugins)
     **Plugins**
-    * OSGi Integration Plugin: http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/
+    * <del>OSGi Integration Plugin: http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</del>
     * AspectJ Development Tools: http://download.eclipse.org/tools/ajdt/44/dev/update/
     * AspectJ M2E Configurer: http://dist.springsource.org/release/AJDT/configurator/
     * TestNG Plugin: http://beust.com/eclipse

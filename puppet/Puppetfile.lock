@@ -7,11 +7,11 @@ FORGE
     tylerwalts-jdk_oracle (1.4.0)
 
 GIT
-  remote: git://github.com/svigneux/puppet-eclipse.git
+  remote: https://github.com/PennAssuranceSoftware/puppet-eclipse.git
   ref: master
-  sha: cb71c8452da86c759d7c87444868f7c3e7592b09
+  sha: de79a041fc3205a22538ca2becbdf581fb2ea517
   specs:
-    svigneux-eclipse (0.0.1)
+    PennAssuranceSoftware-eclipse (0.0.1)
 
 GIT
   remote: https://github.com/maestrodev/puppet-maven.git
@@ -22,10 +22,10 @@ GIT
       maestrodev-wget (>= 1.0.0)
 
 DEPENDENCIES
+  PennAssuranceSoftware-eclipse (>= 0)
   camptocamp-archive (>= 0)
   maestrodev-wget (>= 1.0.0)
   maven (>= 0)
   puppetlabs-stdlib (>= 0)
-  svigneux-eclipse (>= 0)
   tylerwalts-jdk_oracle (>= 0)
 
