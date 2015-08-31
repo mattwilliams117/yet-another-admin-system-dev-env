@@ -15,6 +15,7 @@ class { "maven::maven":
 include eclipse
 include eclipse::plugin::shelled
 include eclipse::plugin::osgi
+include eclipse::plugin::aspectj
 
 # class { 'eclipse': method => 'download', release_name => 'luna', service_release => 'R' } 
 # class { 'eclipse::plugin::shelled': method => 'p2_director' }
