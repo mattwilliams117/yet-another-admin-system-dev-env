@@ -26,6 +26,8 @@ eclipse::plugin::atlassian::method: p2_director
 eclipse::plugin::osgi::method: p2_director
 eclipse::plugin::aspectj::method: p2_director
 eclipse::plugin::testng::method: p2_director
+eclipse::plugin::m2e_buildhelper::method: p2_director
+eclipse::plugin::m2e_apt::method: p2_director
 
 ssmtp::relay::to: martin@duss-janser.ch
 ssmtp::relay::mailhub: asmtp.mail.hostpoint.ch:465
