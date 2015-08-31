@@ -103,7 +103,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.librarian_puppet.resolve_options = {:force => true}
   
   config.vm.provision :puppet do |puppet|
-    # puppet.hiera_config_path = "hiera.yaml"
+    puppet.hiera_config_path = "hiera.yaml"
     puppet.module_path = "modules"
     puppet.manifests_path = "manifests"
     puppet.options = "--verbose --debug --ordering=manifest --hiera_config hiera.yaml"
