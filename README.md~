@@ -6,7 +6,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * Eclipse (with plugins)
     **Plugins**
     * <del>OSGi Integration Plugin: http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</del>
-    * AspectJ Development Tools: http://download.eclipse.org/tools/ajdt/44/dev/update/
+    * <del>AspectJ Development Tools: http://download.eclipse.org/tools/ajdt/44/dev/update/</del>
     * AspectJ M2E Configurer: http://dist.springsource.org/release/AJDT/configurator/
     * TestNG Plugin: http://beust.com/eclipse
     * Java Decompiler Plugin: Special instructions
@@ -25,7 +25,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 
 ## Debugging
 ````
-cd /vagrant/puppet
+cd /vagrant
 sudo puppet apply manifests/default.pp --debug --modulepath=modules --hiera_config=hiera.yaml --ordering=manifest
 ````
 
