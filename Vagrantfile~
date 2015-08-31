@@ -57,6 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
   
   # View the documentation for the provider you're using for more
@@ -102,10 +103,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.librarian_puppet.resolve_options = {:force => true}
   
   config.vm.provision :puppet do |puppet|
-    puppet.hiera_config_path = "puppet/hiera.yaml"
-    puppet.module_path = "puppet/modules"
-    puppet.manifests_path = "puppet/manifests"
-    puppet.options = "--verbose --debug"
+    puppet.hiera_config_path = "hiera.yaml"
+    puppet.module_path = "modules"
+    puppet.manifests_path = "manifests"
+    puppet.options = "--verbose --debug --ordering=manifest --hiera_config hiera.yaml"
   end
   
   # config.vm.provision "chef_solo" do |chef|

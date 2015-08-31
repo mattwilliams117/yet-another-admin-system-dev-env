@@ -12,41 +12,14 @@ class { "maven::maven":
   version => "3.3.3"
 }
 
-class eclipse_test {
-  contain eclipse
-  contain eclipse::plugin::shelled 
-}
-
-class activemq {
-
-  anchor { 'activemq::begin': }
-  ->
-  class { 'eclipse': }
-  ->
-  class { 'eclipse::plugin::shelled': 
-    subscribe => Class['eclipse'],
-  }
-  ->
-  anchor { 'activemq::end': }
-  
-}
-
-include activemq
-
-
-# include eclipse_test
-
-#include eclipse
-#include eclipse::set::helpers
-#include eclipse::plugin::shelled
+include eclipse
+include eclipse::plugin::shelled
+include eclipse::plugin::osgi
 
 # class { 'eclipse': method => 'download', release_name => 'luna', service_release => 'R' } 
 # class { 'eclipse::plugin::shelled': method => 'p2_director' }
 # class { 'eclipse::plugin::markdown': method => 'p2_director' }
-# class { 'eclipse::plugin::osgi': method => 'p2_director' }
-
-
-  
+# class { 'eclipse::plugin::osgi': method => 'p2_director' }  
   
 # exec { 'fix-eclipse-memory1':
 #   command => 'sed -i "s/^256m/1024m/" /opt/eclipse/eclipse.ini',

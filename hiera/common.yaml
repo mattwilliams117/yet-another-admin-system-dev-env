@@ -1,4 +1,6 @@
 eclipse::method: download
+eclipse::release_name: luna
+eclipse::service_release: R
 # eclipse::owner_group: wheel
 eclipse::plugin::egit::method: p2_director
 eclipse::plugin::web::method: p2_director
@@ -21,6 +23,8 @@ eclipse::plugin::mechanic::method: p2_director
 eclipse::plugin::ruby::method: p2_director
 eclipse::plugin::geppetto::method: p2_director
 eclipse::plugin::atlassian::method: p2_director
+eclipse::plugin::osgi::method: p2_director
+eclipse::plugin::aspectj::method: p2_director
 
 ssmtp::relay::to: martin@duss-janser.ch
 ssmtp::relay::mailhub: asmtp.mail.hostpoint.ch:465

@@ -9,7 +9,7 @@ FORGE
 GIT
   remote: https://github.com/PennAssuranceSoftware/puppet-eclipse.git
   ref: master
-  sha: de79a041fc3205a22538ca2becbdf581fb2ea517
+  sha: fda26ebbeb2c9bf7732cf3cae3d7efe6dcb920fb
   specs:
     PennAssuranceSoftware-eclipse (0.0.1)
 
