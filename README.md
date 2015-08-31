@@ -26,7 +26,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 ## Debugging
 ````
 cd /vagrant/puppet
-sudo puppet apply manifests/default.pp --debug --modulepath=modules
+sudo puppet apply manifests/default.pp --debug --modulepath=modules --hiera_config=hiera.yaml --ordering=manifest
 ````
 
 ## Todo

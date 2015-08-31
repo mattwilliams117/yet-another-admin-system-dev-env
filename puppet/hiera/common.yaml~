@@ -1,0 +1,33 @@
+eclipse::method: download
+# eclipse::owner_group: wheel
+eclipse::plugin::egit::method: p2_director
+eclipse::plugin::web::method: p2_director
+eclipse::plugin::mylyn::method: p2_director
+eclipse::plugin::pdt::method: p2_director
+eclipse::plugin::pdt::composer::method: p2_director
+eclipse::plugin::pdt::doctrine::method: p2_director
+eclipse::plugin::pdt::symfony::method: p2_director
+eclipse::plugin::pdt::twig::method: p2_director
+eclipse::plugin::pdt::tools::method: p2_director
+eclipse::plugin::pdt::makegood::method: p2_director
+eclipse::plugin::pdt::editors::method: p2_director
+eclipse::plugin::logviewer::method: p2_director
+eclipse::plugin::vrapper::method: p2_director
+eclipse::plugin::colortheme::method: p2_director
+eclipse::plugin::copyright_wizard::method: p2_director
+eclipse::plugin::ansi_console::method: p2_director
+eclipse::plugin::shelled::method: p2_director
+eclipse::plugin::mechanic::method: p2_director
+eclipse::plugin::ruby::method: p2_director
+eclipse::plugin::geppetto::method: p2_director
+eclipse::plugin::atlassian::method: p2_director
+
+ssmtp::relay::to: martin@duss-janser.ch
+ssmtp::relay::mailhub: asmtp.mail.hostpoint.ch:465
+
+yumupdatesd::emit_via: email
+yumupdatesd::do_download: true
+yumupdatesd::do_download_deps: true
+
+logwatch::output: email
+
