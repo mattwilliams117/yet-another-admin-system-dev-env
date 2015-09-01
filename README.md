@@ -14,7 +14,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
     
     **Preferences**
 
-* Java Decompiler
+* <del>Java Decompiler</del>
 * <del>Git</del>
 * <del>Docker</del>
 * Squirrel SQL (setup for database)
