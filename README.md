@@ -9,9 +9,9 @@ Vagrant configuraiton for Yet Another Admin System development environment.
     * <del>AspectJ Development Tools: http://download.eclipse.org/tools/ajdt/44/dev/update/</del>
     * <del>AspectJ M2E Configurer: http://dist.springsource.org/release/AJDT/configurator/</del>
     * <del>TestNG Plugin: http://beust.com/eclipse</del>
-    * Java Decompiler Plugin: Special instructions
-    * buildhelper Maven Connector
-    * m2e-apt Maven Connector
+    * <del>Java Decompiler Plugin: Special instructions</del>
+    * <del>buildhelper Maven Connector</del>
+    * <del>m2e-apt Maven Connector</del>
     
     **Preferences**
     

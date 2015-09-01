@@ -19,6 +19,7 @@ include eclipse::plugin::aspectj
 include eclipse::plugin::testng
 include eclipse::plugin::m2e_buildhelper
 include eclipse::plugin::m2e_apt
+include eclipse::plugin::jd
 
 # class { 'eclipse': method => 'download', release_name => 'luna', service_release => 'R' } 
 # class { 'eclipse::plugin::shelled': method => 'p2_director' }
