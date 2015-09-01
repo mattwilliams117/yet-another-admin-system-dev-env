@@ -2,8 +2,7 @@
 Vagrant configuraiton for Yet Another Admin System development environment.
 
 ## Tools
-* Java Decompiler
-* Eclipse (with plugins)
+* <del>Eclipse (with plugins)</del>
     **Plugins**
     * <del>OSGi Integration Plugin: http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.7.0/N/0.7.0.201309291400/</del>
     * <del>AspectJ Development Tools: http://download.eclipse.org/tools/ajdt/44/dev/update/</del>
@@ -14,9 +13,10 @@ Vagrant configuraiton for Yet Another Admin System development environment.
     * <del>m2e-apt Maven Connector</del>
     
     **Preferences**
-    
-* Git
-* Docker
+
+* Java Decompiler
+* <del>Git</del>
+* <del>Docker</del>
 * Squirrel SQL (setup for database)
 * <del>Maven</del>
 * <del>JDK(s)</del>

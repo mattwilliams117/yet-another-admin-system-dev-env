@@ -2,6 +2,8 @@
 Exec {
   path => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"] }
 
+package { 'docker.io': ensure => latest }
+package { 'git': ensure => latest }
 
 class { "jdk_oracle":
   version  => "7",
@@ -20,11 +22,6 @@ include eclipse::plugin::testng
 include eclipse::plugin::m2e_buildhelper
 include eclipse::plugin::m2e_apt
 include eclipse::plugin::jd
-
-# class { 'eclipse': method => 'download', release_name => 'luna', service_release => 'R' } 
-# class { 'eclipse::plugin::shelled': method => 'p2_director' }
-# class { 'eclipse::plugin::markdown': method => 'p2_director' }
-# class { 'eclipse::plugin::osgi': method => 'p2_director' }  
   
 # exec { 'fix-eclipse-memory1':
 #   command => 'sed -i "s/^256m/1024m/" /opt/eclipse/eclipse.ini',
