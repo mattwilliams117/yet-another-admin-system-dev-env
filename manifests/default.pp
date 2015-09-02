@@ -5,17 +5,6 @@ Exec {
 package { 'docker.io': ensure => latest }
 package { 'git': ensure => latest }
 
-archive::download { 'jd-gui_1.4.0-0_all.deb':
-    url              => 'https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui_1.4.0-0_all.deb',
-    checksum         => false,
-    follow_redirects => true,
-} ->
-package { "java-decompiler":
-  provider => dpkg,
-  ensure   => latest,
-  source   => "/usr/src/jd-gui_1.4.0-0_all.deb"
-}
-
 class { "jdk_oracle":
   version  => "7",
   version_update => "67"
@@ -24,6 +13,22 @@ class { "jdk_oracle":
 class { "maven::maven":
   version => "3.3.3"
 }
+
+class java_decompiler {
+  archive::download { 'jd-gui_1.4.0-0_all.deb':
+    url              => 'https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui_1.4.0-0_all.deb',
+    checksum         => false,
+    follow_redirects => true,
+  } ->
+  package { "java-decompiler":
+    provider => dpkg,
+    ensure   => latest,
+    source   => "/usr/src/jd-gui_1.4.0-0_all.deb"
+  }
+}
+include java_decompiler
+include squirrel_sql
+
 
 include eclipse
 include eclipse::plugin::shelled
