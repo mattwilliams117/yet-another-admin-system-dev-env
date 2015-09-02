@@ -18,7 +18,3 @@ mod "maven",
 # Eclipse
 mod 'PennAssuranceSoftware/eclipse',
   :git => 'https://github.com/PennAssuranceSoftware/puppet-eclipse.git'
-  
-# Squirrel Sql Client
-mod 'PennAssuranceSoftware/squirrel_sql',
-  :git => 'https://github.com/PennAssuranceSoftware/puppet-squirrel-sql.git'
