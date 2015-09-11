@@ -95,6 +95,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   config.vm.provision :shell, :path => "bootstrap.sh"
   
+  
+  
   config.librarian_puppet.puppetfile_dir = "puppet"
   config.librarian_puppet.placeholder_filename = ".gitkeep"
   config.librarian_puppet.use_v1_api  = '1' # Check https://github.com/rodjek/librarian-puppet#how-to-use

@@ -5,13 +5,13 @@ Exec {
 package { 'docker.io': ensure => latest }
 package { 'git': ensure => latest }
 
-# include 'docker'
+include 'docker'
 
 # sudo docker run -d --name=db -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
-# docker::run { 'db':
-#   image   => 'pennassurancesoftware/postgresql',
-#   env     => ['USER=super', 'DB=yaas', 'PASS=postgres', 'POSTGRES_PASS=postgres'],
-# }
+docker::run { 'db':
+  image   => 'pennassurancesoftware/postgresql',
+  env     => ['USER=super', 'DB=yaas', 'PASS=postgres', 'POSTGRES_PASS=postgres'],
+}
 
 
 class { "jdk_oracle":

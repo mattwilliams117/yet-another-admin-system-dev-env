@@ -3,4 +3,4 @@
 apt-get update
 apt-get install -y puppet
 
-puppet module install garethr/docker;
+puppet module install --force garethr/docker;
