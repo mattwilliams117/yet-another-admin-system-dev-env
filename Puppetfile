@@ -6,6 +6,9 @@ forge "https://forgeapi.puppetlabs.com"
 mod 'camptocamp-archive'
 mod 'puppetlabs-stdlib'
 
+# Docker
+mod 'garethr/docker'
+
 # JDK
 mod "tylerwalts/jdk_oracle"
 
@@ -22,3 +25,4 @@ mod 'PennAssuranceSoftware/eclipse',
 # Squirrel Sql Client
 mod 'PennAssuranceSoftware/squirrel_sql',
   :git => 'https://github.com/PennAssuranceSoftware/puppet-squirrel-sql.git'
+ 

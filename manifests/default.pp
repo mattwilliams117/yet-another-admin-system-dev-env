@@ -5,15 +5,38 @@ Exec {
 package { 'docker.io': ensure => latest }
 package { 'git': ensure => latest }
 
+# include 'docker'
+
+# sudo docker run -d --name=db -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
+# docker::run { 'db':
+#   image   => 'pennassurancesoftware/postgresql',
+#   env     => ['USER=super', 'DB=yaas', 'PASS=postgres', 'POSTGRES_PASS=postgres'],
+# }
+
+
 class { "jdk_oracle":
   version  => "7",
   version_update => "67"
 }
 
+# Maven
+$servers = [
+  { id => "github", username => "pas-jenkins", password => "london10", },
+  { id => "internal-nexus-repository", username => "jbc", password => "london10", },
+  { id => "internal-nexus-snapshot-repository", username => "jbc",  password => "london10", },
+  { id => "internal-nexus-sites-repository", username => "jbc", password => "london10", },
+  { id => "internal-nexus-release-repository", username => "jbc", password => "london10", },
+]
+maven::settings { 'maven-user-settings' :
+    servers => $servers,
+    user => 'vagrant'
+} ->
 class { "maven::maven":
   version => "3.3.3"
 }
 
+
+# Java Decompiler
 class java_decompiler {
   archive::download { 'jd-gui_1.4.0-0_all.deb':
     url              => 'https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui_1.4.0-0_all.deb',
@@ -27,9 +50,12 @@ class java_decompiler {
   }
 }
 include java_decompiler
+
+# Squirrel SQL
 include squirrel_sql
 
 
+# Eclipse
 include eclipse
 include eclipse::plugin::shelled
 include eclipse::plugin::osgi
@@ -38,6 +64,8 @@ include eclipse::plugin::testng
 include eclipse::plugin::m2e_buildhelper
 include eclipse::plugin::m2e_apt
 include eclipse::plugin::jd
+
+
   
 # exec { 'fix-eclipse-memory1':
 #   command => 'sed -i "s/^256m/1024m/" /opt/eclipse/eclipse.ini',

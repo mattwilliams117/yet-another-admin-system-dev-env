@@ -1,4 +1,4 @@
-name 'yaas-dev'
+name 'yaas-dev-env'
 version '1.0.0'
 
 author 'jeromebridge'

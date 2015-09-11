@@ -11,13 +11,11 @@ Vagrant configuraiton for Yet Another Admin System development environment.
     * <del>Java Decompiler Plugin: Special instructions</del>
     * <del>buildhelper Maven Connector</del>
     * <del>m2e-apt Maven Connector</del>
-    
-    **Preferences**
 
 * <del>Java Decompiler</del>
 * <del>Git</del>
 * <del>Docker</del>
-* Squirrel SQL (setup for database)
+* <del>Squirrel SQL (setup for database)</del>
 * <del>Maven</del>
 * <del>JDK(s)</del>
 
@@ -29,8 +27,10 @@ sudo puppet apply manifests/default.pp --debug --modulepath=modules --hiera_conf
 ````
 
 ## Todo
-1. Setup Maven `settings.xml`
-2. Start Docker db
-3. setup eclipse workspace
-4. Get Repositories?
+1. <del>Setup Maven `settings.xml`</del>
+2. Provision Docker db
 5. Setup Database connections in Squirrel (with needed driver(s))
+3. setup eclipse workspace
+6. Setup Eclipse Preferences
+4. Get Repositories?
+
