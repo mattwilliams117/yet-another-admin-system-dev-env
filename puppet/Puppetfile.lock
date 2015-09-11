@@ -3,15 +3,22 @@ FORGE
   specs:
     camptocamp-archive (0.8.1)
     maestrodev-wget (1.7.0)
-    puppetlabs-stdlib (4.8.0)
+    puppetlabs-stdlib (4.9.0)
     tylerwalts-jdk_oracle (1.4.0)
 
 GIT
   remote: https://github.com/PennAssuranceSoftware/puppet-eclipse.git
   ref: master
-  sha: fda26ebbeb2c9bf7732cf3cae3d7efe6dcb920fb
+  sha: 9f5261e4d64c0ba3bc5411c177a4c12b0bf330de
   specs:
     PennAssuranceSoftware-eclipse (0.0.1)
+
+GIT
+  remote: https://github.com/PennAssuranceSoftware/puppet-squirrel-sql.git
+  ref: master
+  sha: 37417b3270773ec3c01be9e33a682020265cc3e4
+  specs:
+    PennAssuranceSoftware-squirrel_sql (0.0.1)
 
 GIT
   remote: https://github.com/maestrodev/puppet-maven.git
@@ -23,6 +30,7 @@ GIT
 
 DEPENDENCIES
   PennAssuranceSoftware-eclipse (>= 0)
+  PennAssuranceSoftware-squirrel_sql (>= 0)
   camptocamp-archive (>= 0)
   maestrodev-wget (>= 1.0.0)
   maven (>= 0)
