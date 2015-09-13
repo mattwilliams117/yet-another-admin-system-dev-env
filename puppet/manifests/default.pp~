@@ -5,19 +5,27 @@ Exec {
 package { 'docker.io': ensure => latest }
 package { 'git': ensure => latest }
 
+# class { "jdk_oracle":
+#   version  => "7",
+#   version_update => "67"
+# }
+package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']: 
+  ensure => latest,
+}
+
+
 include 'docker'
 
-# sudo docker run -d --name=db -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
-# docker::run { 'db':
-#   image   => 'pennassurancesoftware/postgresql',
-#   env     => ['USER=super', 'DB=yaas', 'PASS=postgres', 'POSTGRES_PASS=postgres'],
-# }
-
-
-class { "jdk_oracle":
-  version  => "7",
-  version_update => "67"
+# sudo docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
+docker::run { 'db':
+  image   => 'pennassurancesoftware/postgresql',
+  env     => ['USER=super', 'DB=yaas', 'PASS=postgres', 'POSTGRES_PASS=postgres'],
+  ports   => ['5432:5432'],
+  restart_service => true,
 }
+
+
+
 
 # Maven
 $servers = [

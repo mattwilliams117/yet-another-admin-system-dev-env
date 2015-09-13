@@ -4,6 +4,7 @@
 forge "https://forgeapi.puppetlabs.com"
 
 mod 'camptocamp-archive'
+mod 'puppetlabs-apt'
 mod 'puppetlabs-stdlib'
 
 # JDK
@@ -23,7 +24,7 @@ mod 'PennAssuranceSoftware/eclipse',
 mod 'PennAssuranceSoftware/squirrel_sql',
   :git => 'https://github.com/PennAssuranceSoftware/puppet-squirrel-sql.git'
 
-# Docker
-mod 'garethr/docker',
-  :git => 'https://github.com/garethr/garethr-docker.git',
-  :ref => 'v3.3.0'
+# Docker (doesn't work for some stupid fucking reason)
+# mod 'garethr/docker',
+#   :git => 'https://github.com/garethr/garethr-docker.git',
+#   :ref => 'v3.3.0'
