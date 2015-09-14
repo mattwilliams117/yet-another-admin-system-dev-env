@@ -18,6 +18,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>Squirrel SQL (setup for database)</del>
 * <del>Maven</del>
 * <del>JDK(s)</del>
+* Gradle?
 
 
 ## Debugging
@@ -33,4 +34,3 @@ sudo puppet apply manifests/default.pp --debug --modulepath=modules --hiera_conf
 3. setup eclipse workspace
 6. Setup Eclipse Preferences
 4. Get Repositories?
-

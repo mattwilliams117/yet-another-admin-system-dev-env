@@ -1,3 +1,5 @@
 curl -s https://gist.githubusercontent.com/ekristen/11254304/raw/adf549c5b663fe7127440f3c3b82d82cfc3c51c2/check_docker_container.sh | bash /dev/stdin db
 
 
+# jdbc:postgresql://127.0.0.1/yaas
+# super / postgres
