@@ -6,6 +6,7 @@ apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
 apt-get install -y puppet
 apt-get install -y apparmor apparmor-profiles apparmor-utils
+apt-get install -y docker.io
 
 puppet module install --force puppetlabs-apt;
 puppet module install --force garethr/docker;

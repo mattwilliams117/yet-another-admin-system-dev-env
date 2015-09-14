@@ -2,7 +2,7 @@
 Exec {
   path => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"] }
 
-package { 'docker.io': ensure => latest }
+# package { 'docker.io': ensure => latest }
 package { 'git': ensure => latest }
 
 # class { "jdk_oracle":
@@ -14,15 +14,15 @@ package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:
 }
 
 
-include 'docker'
+# include 'docker'
 
-# sudo docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
-docker::run { 'db':
-  image   => 'pennassurancesoftware/postgresql',
-  env     => ['USER=super', 'DB=yaas', 'PASS=postgres', 'POSTGRES_PASS=postgres'],
-  ports   => ['5432:5432'],
-  # restart_service => true,
-}
+# # sudo docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
+# docker::run { 'db':
+#   image   => 'pennassurancesoftware/postgresql',
+#   env     => ['USER=super', 'DB=yaas', 'PASS=postgres', 'POSTGRES_PASS=postgres'],
+#   ports   => ['5432:5432'],
+#   # restart_service => true,
+# }
 
 
 
