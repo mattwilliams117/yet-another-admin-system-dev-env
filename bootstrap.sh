@@ -13,7 +13,14 @@ apt-get install -y apparmor apparmor-profiles apparmor-utils
 apt-get install -y lxc-docker-1.7.1
 
 # Start Docker Image(s)
-./start-docker-db.sh
+CONTAINER=db
+RUNNING=$(docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
+if [ "$RUNNING" == "false" ]; then
+  docker start $CONTAINER
+fi
+if [ "$RUNNING" == "" ]; then
+  sudo docker run -d --name=$CONTAINER -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
+fi
 
 
 puppet module install --force puppetlabs-apt;

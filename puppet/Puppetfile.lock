@@ -16,7 +16,7 @@ GIT
 GIT
   remote: https://github.com/PennAssuranceSoftware/puppet-squirrel-sql.git
   ref: master
-  sha: 37417b3270773ec3c01be9e33a682020265cc3e4
+  sha: 8c21c407dd534a171ff48f6730e1fb600ff823d9
   specs:
     PennAssuranceSoftware-squirrel_sql (0.0.1)
 
