@@ -3,3 +3,7 @@ curl -s https://gist.githubusercontent.com/ekristen/11254304/raw/adf549c5b663fe7
 
 # jdbc:postgresql://127.0.0.1/yaas
 # super / postgres
+
+
+sudo docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
+sudo docker run -d --name=app --link db:db -p 8080:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system

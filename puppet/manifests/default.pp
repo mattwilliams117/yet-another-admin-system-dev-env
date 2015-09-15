@@ -1,32 +1,8 @@
 # What is an OS agnostic workstation.
-Exec {
-  path => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"] }
+Exec { path => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"] }
 
-# package { 'docker.io': ensure => latest }
-package { 'git': ensure => latest }
-
-# class { "jdk_oracle":
-#   version  => "7",
-#   version_update => "67"
-# }
-package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:
-  ensure => latest,
-}
-
-
-# include 'docker'
-
-# # sudo docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
-# # sudo docker run -d --name=app --link db:db -p 8080:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system
-# docker::run { 'db':
-#   image   => 'pennassurancesoftware/postgresql',
-#   env     => ['USER=super', 'DB=yaas', 'PASS=postgres', 'POSTGRES_PASS=postgres'],
-#   ports   => ['5432:5432'],
-#   # restart_service => true,
-# }
-
-
-
+# Java
+package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:  ensure => latest, }
 
 # Maven
 $servers = [
@@ -37,13 +13,12 @@ $servers = [
   { id => "internal-nexus-release-repository", username => "jbc", password => "london10", },
 ]
 maven::settings { 'maven-user-settings' :
-    servers => $servers,
-    user => 'vagrant'
+  servers => $servers,
+  user => 'vagrant'
 } ->
 class { "maven::maven":
   version => "3.3.3"
 }
-
 
 # Java Decompiler
 class java_decompiler {
@@ -61,8 +36,11 @@ class java_decompiler {
 include java_decompiler
 
 # Squirrel SQL
-include squirrel_sql
-
+class { "squirrel_sql":
+  aliases => [
+    { name => "LOCAL", url => "jdbc:postgresql://127.0.0.1/yaas", user => "super", password => "postgres" }
+  ]
+}
 
 # Eclipse
 include eclipse

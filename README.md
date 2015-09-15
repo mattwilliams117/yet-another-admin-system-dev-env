@@ -19,9 +19,10 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>Maven</del>
 * <del>JDK(s)</del>
 * Gradle?
+* Atom?
 
 
-## Debugging
+## Debugging (Puppet)
 ````
 cd /vagrant/puppet
 sudo puppet apply manifests/default.pp --debug --modulepath=modules --hiera_config=hiera.yaml --ordering=manifest
@@ -30,7 +31,7 @@ sudo puppet apply manifests/default.pp --debug --modulepath=modules --hiera_conf
 ## Todo
 1. <del>Setup Maven `settings.xml`</del>
 2. <del>Provision Docker db</del>
-5. Setup Database connections in Squirrel (with needed driver(s))
+5. <del>Setup Database connections in Squirrel (with needed driver(s))</del>
 3. setup eclipse workspace
 6. Setup Eclipse Preferences
 4. Get Repositories?
