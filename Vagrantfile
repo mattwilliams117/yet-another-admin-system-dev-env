@@ -55,12 +55,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider "virtualbox" do |vb|
     # Don't boot with headless mode
     vb.gui = true
-  
+
     # Use VBoxManage to customize the VM. For example to change memory:
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.cpus = 2
+    vb.customize ["modifyvm", :id, "--memory", "4096"]
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
-  
+
   # View the documentation for the provider you're using for more
   # information on available options.
 
@@ -95,22 +96,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :shell, :path => "bootstrap.sh"
-  
-  
-  
+
+
+
   config.librarian_puppet.puppetfile_dir = "puppet"
   config.librarian_puppet.placeholder_filename = ".gitkeep"
   config.librarian_puppet.use_v1_api  = '1' # Check https://github.com/rodjek/librarian-puppet#how-to-use
   config.librarian_puppet.destructive = false # Check https://github.com/rodjek/librarian-puppet#how-to-use
   config.librarian_puppet.resolve_options = {:force => true}
-  
+
   config.vm.provision :puppet do |puppet|
     puppet.hiera_config_path = "puppet/hiera.yaml"
     puppet.module_path = "puppet/modules"
     puppet.manifests_path = "puppet/manifests"
     puppet.options = "--verbose --debug --ordering=manifest --hiera_config puppet/hiera.yaml"
   end
-  
+
   # config.vm.provision "chef_solo" do |chef|
   #  chef.cookbooks_path = "cookbooks"
   #  chef.roles_path = "../my-recipes/roles"
@@ -119,7 +120,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  chef.add_recipe "java"
   #  chef.json = { :java => { :install_flavor => "oracle", :jdk_version => "7", :oracle => { :accept_oracle_download_terms => true } } }
   #  chef.add_role "web"
-  
+
     # You may also specify custom JSON attributes:
   #  chef.json = { mysql_password: "foo" }
   #end
