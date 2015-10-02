@@ -48,6 +48,8 @@ include eclipse::plugin::shelled
 include eclipse::plugin::osgi
 include eclipse::plugin::aspectj
 include eclipse::plugin::testng
+include eclipse::plugin::m2e
+include eclipse::plugin::m2e_aspectj
 include eclipse::plugin::m2e_buildhelper
 include eclipse::plugin::m2e_apt
 include eclipse::plugin::jd

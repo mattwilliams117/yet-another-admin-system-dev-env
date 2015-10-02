@@ -26,6 +26,8 @@ eclipse::plugin::atlassian::method: p2_director
 eclipse::plugin::osgi::method: p2_director
 eclipse::plugin::aspectj::method: p2_director
 eclipse::plugin::testng::method: p2_director
+eclipse::plugin::m2e::method: p2_director
+eclipse::plugin::m2e_aspectj::method: p2_director
 eclipse::plugin::m2e_buildhelper::method: p2_director
 eclipse::plugin::m2e_apt::method: p2_director
 eclipse::plugin::jd::method: p2_director
@@ -38,4 +40,3 @@ yumupdatesd::do_download: true
 yumupdatesd::do_download_deps: true
 
 logwatch::output: email
-

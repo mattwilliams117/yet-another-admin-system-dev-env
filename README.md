@@ -11,6 +11,8 @@ Vagrant configuraiton for Yet Another Admin System development environment.
     * <del>Java Decompiler Plugin: Special instructions</del>
     * <del>buildhelper Maven Connector</del>
     * <del>m2e-apt Maven Connector</del>
+    * m2e
+    * m2e AspectJ Connector
 
 * <del>Java Decompiler</del>
 * <del>Git</del>
@@ -18,8 +20,14 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>Squirrel SQL (setup for database)</del>
 * <del>Maven</del>
 * <del>JDK(s)</del>
-* Gradle?
-* Atom?
+* Atom
+* <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)
+* Ruby (in order to run `rultor` command)
+* Rultor (Ruby Gem)
+* gnugp2 (Public/Private Keys) ; Force alias to gpg2 so rultor works: https://wiki.debian.org/Teams/GnuPG/UsingGnuPGv2
+* Gradle? (I may not because I kind of like the idea of each project bootstraping their own Gradle version)
+* Kdenlive (for video editing)?
+* Yaas CLI
 
 
 ## Debugging (Puppet)
@@ -33,5 +41,7 @@ sudo puppet apply manifests/default.pp --debug --modulepath=modules --hiera_conf
 2. <del>Provision Docker db</del>
 5. <del>Setup Database connections in Squirrel (with needed driver(s))</del>
 3. setup eclipse workspace
-6. Setup Eclipse Preferences
+    6. Setup Eclipse Preferences
+    7. Need to have the git user somewhere when they setup through vagrant
 4. Get Repositories?
+5. Install Atom
