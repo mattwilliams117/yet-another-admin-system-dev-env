@@ -60,6 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus = 2
     vb.customize ["modifyvm", :id, "--memory", "4096"]
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+    vb.customize ["modifyvm", :id, "--accelerate3d", "off"]
   end
 
   # View the documentation for the provider you're using for more
