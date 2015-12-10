@@ -4,6 +4,11 @@ Exec { path => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"] }
 # Java
 package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:  ensure => latest, }
 
+# Brackets
+include apt
+apt::ppa { 'ppa:webupd8team/brackets': notify => Exec['apt_update'] }
+package { "brackets":  ensure  => latest }
+
 # Maven
 $servers = [
   { id => "github", username => "pas-jenkins", password => "london10", },

@@ -20,6 +20,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>Squirrel SQL (setup for database)</del>
 * <del>Maven</del>
 * <del>JDK(s)</del>
+* <del>Brackets Editor</del>
 * Atom
 * <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)
 * Ruby (in order to run `rultor` command)
@@ -33,7 +34,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 ## Debugging (Puppet)
 ````
 cd /vagrant/puppet
-sudo puppet apply manifests/default.pp --debug --modulepath=modules --hiera_config=hiera.yaml --ordering=manifest
+sudo puppet apply manifests/default.pp --debug --modulepath=/etc/puppet/modules:modules --hiera_config=hiera.yaml --ordering=manifest
 ````
 
 ## Todo
