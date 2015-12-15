@@ -21,14 +21,15 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>Maven</del>
 * <del>JDK(s)</del>
 * <del>Brackets Editor</del>
-* Atom
-* <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)
+* <del>NodeJS</del>
+* <del>Atom</del>
 * Ruby (in order to run `rultor` command)
 * Rultor (Ruby Gem)
 * gnugp2 (Public/Private Keys) ; Force alias to gpg2 so rultor works: https://wiki.debian.org/Teams/GnuPG/UsingGnuPGv2
-* Gradle? (I may not because I kind of like the idea of each project bootstraping their own Gradle version)
-* Kdenlive (for video editing)?
 * Yaas CLI
+* Kdenlive (for video editing)?
+* <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)
+* Gradle? (I may not because I kind of like the idea of each project bootstraping their own Gradle version)
 
 
 ## Debugging (Puppet)

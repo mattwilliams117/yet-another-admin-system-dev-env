@@ -4,10 +4,24 @@ Exec { path => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"] }
 # Java
 package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:  ensure => latest, }
 
-# Brackets
+# Apt
 include apt
+exec { "apt-get update":
+    command => "/usr/bin/apt-get update",
+    onlyif => "/bin/sh -c '[ ! -f /var/cache/apt/pkgcache.bin ] || /usr/bin/find /etc/apt/* -cnewer /var/cache/apt/pkgcache.bin | /bin/grep . > /dev/null'",
+}
+
+# Brackets
 apt::ppa { 'ppa:webupd8team/brackets': notify => Exec['apt_update'] }
-package { "brackets":  ensure  => latest }
+package { "brackets":  ensure  => latest, require  => Exec['apt-get update'], }
+
+# Atom
+apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
+package { "atom":  ensure  => latest, require  => Exec['apt-get update'], }
+
+# NodeJS
+package { "npm":  ensure  => latest }
+package { "nodejs-legacy":  ensure  => latest, require  => Exec['apt-get update'], }
 
 # Maven
 $servers = [

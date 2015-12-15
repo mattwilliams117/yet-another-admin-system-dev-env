@@ -24,6 +24,5 @@ if [ "$RUNNING" == "" ]; then
   sudo docker run -d --name=$CONTAINER -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
 fi
 
-
 puppet module install --force puppetlabs-apt;
 puppet module install --force garethr/docker;
