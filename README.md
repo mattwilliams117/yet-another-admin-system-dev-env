@@ -23,6 +23,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>Brackets Editor</del>
 * <del>NodeJS</del>
 * <del>Atom</del>
+    * <del>Node Debugger</del>
 * Ruby (in order to run `rultor` command)
 * Rultor (Ruby Gem)
 * gnugp2 (Public/Private Keys) ; Force alias to gpg2 so rultor works: https://wiki.debian.org/Teams/GnuPG/UsingGnuPGv2

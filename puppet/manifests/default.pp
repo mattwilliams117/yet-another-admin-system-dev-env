@@ -18,10 +18,15 @@ package { "brackets":  ensure  => latest, require  => Exec['apt-get update'], }
 # Atom
 apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
 package { "atom":  ensure  => latest, require  => Exec['apt-get update'], }
+package { 'language-puppet': ensure   => latest, provider => apm, }
+package { 'node-debugger': ensure   => latest, provider => apm, }
 
 # NodeJS
 package { "npm":  ensure  => latest }
 package { "nodejs-legacy":  ensure  => latest, require  => Exec['apt-get update'], }
+
+# Chrome
+include 'google_chrome'
 
 # Maven
 $servers = [

@@ -26,3 +26,5 @@ fi
 
 puppet module install --force puppetlabs-apt;
 puppet module install --force garethr/docker;
+puppet module install --force cyberious-apm
+puppet module install --force jamesnetherton-google_chrome
