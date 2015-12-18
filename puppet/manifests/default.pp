@@ -11,6 +11,9 @@ exec { "apt-get update":
     onlyif => "/bin/sh -c '[ ! -f /var/cache/apt/pkgcache.bin ] || /usr/bin/find /etc/apt/* -cnewer /var/cache/apt/pkgcache.bin | /bin/grep . > /dev/null'",
 }
 
+# Gimp
+package { "gimp":  ensure  => latest, require  => Exec['apt-get update'], }
+
 # Brackets
 apt::ppa { 'ppa:webupd8team/brackets': notify => Exec['apt_update'] }
 package { "brackets":  ensure  => latest, require  => Exec['apt-get update'], }
@@ -20,6 +23,7 @@ apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
 package { "atom":  ensure  => latest, require  => Exec['apt-get update'], }
 package { 'language-puppet': ensure   => latest, provider => apm, }
 package { 'node-debugger': ensure   => latest, provider => apm, }
+package { 'react': ensure   => latest, provider => apm, }
 
 # NodeJS
 package { "npm":  ensure  => latest }
