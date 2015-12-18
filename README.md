@@ -24,9 +24,9 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>NodeJS</del>
 * <del>Atom</del>
     * <del>Node Debugger</del>
-* Ruby (in order to run `rultor` command)
-* Rultor (Ruby Gem)
-* gnugp2 (Public/Private Keys) ; Force alias to gpg2 so rultor works: https://wiki.debian.org/Teams/GnuPG/UsingGnuPGv2
+* <del>Ruby (in order to run `rultor` command)</del>
+* <del>Rultor (Ruby Gem)</del>
+* <del>gnugp2 (Public/Private Keys) ; Force alias to gpg2 so rultor works: https://wiki.debian.org/Teams/GnuPG/UsingGnuPGv2</del>
 * Yaas CLI
 * Kdenlive (for video editing)?
 * <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)

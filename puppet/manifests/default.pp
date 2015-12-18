@@ -14,6 +14,9 @@ exec { "apt-get update":
 # Gimp
 package { "gimp":  ensure  => latest, require  => Exec['apt-get update'], }
 
+# Launch4J Supporting Libraries
+package { ['lib32z1','lib32ncurses5', 'lib32bz2-1.0']:  ensure => latest, }
+
 # Brackets
 apt::ppa { 'ppa:webupd8team/brackets': notify => Exec['apt_update'] }
 package { "brackets":  ensure  => latest, require  => Exec['apt-get update'], }
@@ -31,6 +34,10 @@ package { "nodejs-legacy":  ensure  => latest, require  => Exec['apt-get update'
 
 # Chrome
 include 'google_chrome'
+
+# Rultor
+package { 'gpgv2':  ensure  => latest, require  => Exec['apt-get update'], }
+package { 'rultor': ensure => 'installed', provider => 'gem', }
 
 # Maven
 $servers = [
