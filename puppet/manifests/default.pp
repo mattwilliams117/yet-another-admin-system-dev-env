@@ -27,6 +27,7 @@ package { "atom":  ensure  => latest, require  => Exec['apt-get update'], }
 package { 'language-puppet': ensure   => latest, provider => apm, }
 package { 'node-debugger': ensure   => latest, provider => apm, }
 package { 'react': ensure   => latest, provider => apm, }
+package { 'mocha-test-runner': ensure   => latest, provider => apm, }
 
 # NodeJS
 package { "npm":  ensure  => latest }

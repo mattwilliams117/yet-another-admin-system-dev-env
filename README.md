@@ -30,7 +30,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * Yaas CLI
 * Kdenlive (for video editing)?
 * <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)
-* Gradle? (I may not because I kind of like the idea of each project bootstraping their own Gradle version)
+* <del>Gradle? (I may not because I kind of like the idea of each project bootstraping their own Gradle version)</del>
 
 
 ## Debugging (Puppet)
