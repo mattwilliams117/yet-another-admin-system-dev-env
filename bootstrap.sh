@@ -6,6 +6,9 @@
 echo deb http://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list
 apt-key adv --keyserver pgp.mit.edu --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 
+# NodeJs Sources
+curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+
 apt-get update
 
 # DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
