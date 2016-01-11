@@ -31,8 +31,6 @@ package { 'mocha-test-runner': ensure   => latest, provider => apm, }
 package { 'git-diff': ensure   => latest, provider => apm, }
 
 # NodeJS
-# package { "npm":  ensure  => latest }
-# package { "nodejs-legacy":  ensure  => latest, require  => Exec['apt-get update'], }
 package { "nodejs":  ensure  => latest }
 package { "npm":  ensure  => latest }
 
