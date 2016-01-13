@@ -3,6 +3,7 @@ Exec { path => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"] }
 
 # Java
 package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:  ensure => latest, }
+package { "visualvm":  ensure  => latest }
 
 # Apt
 include apt
@@ -32,7 +33,6 @@ package { 'git-diff': ensure   => latest, provider => apm, }
 
 # NodeJS
 package { "nodejs":  ensure  => latest }
-package { "npm":  ensure  => latest }
 
 # Chrome
 include 'google_chrome'

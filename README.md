@@ -14,6 +14,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
     * m2e
     * m2e AspectJ Connector
 
+* <del>VisualVM</del>
 * <del>Java Decompiler</del>
 * <del>Git</del>
 * <del>Docker</del>
