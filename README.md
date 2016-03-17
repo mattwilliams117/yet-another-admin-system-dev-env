@@ -48,4 +48,4 @@ sudo puppet apply manifests/default.pp --debug --modulepath=/etc/puppet/modules:
     6. Setup Eclipse Preferences
     7. Need to have the git user somewhere when they setup through vagrant
 4. Get Repositories?
-5. Install Atom
+5. <del>Install Atom</del>

@@ -15,6 +15,9 @@ exec { "apt-get update":
 # Gimp
 package { "gimp":  ensure  => latest, require  => Exec['apt-get update'], }
 
+# Meld
+package { "meld":  ensure  => latest, require  => Exec['apt-get update'], }
+
 # Launch4J Supporting Libraries
 package { ['lib32z1','lib32ncurses5', 'lib32bz2-1.0']:  ensure => latest, }
 
@@ -33,6 +36,7 @@ package { 'linter-eslint': ensure   => latest, provider => apm, }
 package { 'node-debugger': ensure   => latest, provider => apm, }
 package { 'mocha-test-runner': ensure   => latest, provider => apm, }
 package { 'react': ensure   => latest, provider => apm, }
+package { 'xml-formatter': ensure   => latest, provider => apm, }
 
 
 # NodeJS
