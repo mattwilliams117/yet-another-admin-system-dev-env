@@ -51,6 +51,8 @@ sudo puppet apply manifests/default.pp --debug --modulepath=/etc/puppet/modules:
 5. <del>Install Atom</del>
 
 ## Screencast (to GIF)
+http://askubuntu.com/questions/107726/how-to-create-animated-gif-images-of-a-screencast
+
 ````
 rm screencast.ogv; rm -Rf screencast
 recordmydesktop --output=screencast.ogv
@@ -58,3 +60,8 @@ mplayer -ao null screencast.ogv -vo jpeg:outdir=screencast
 convert screencast/* screencast.gif
 rm screencast.ogv; rm -Rf screencast
 ````
+
+OR
+`byzanz-record --duration=15 screencast.gif`
+
+`byzanz-record --duration=15 --x=200 --y=300 --width=700 --height=400 screencast.gif`
