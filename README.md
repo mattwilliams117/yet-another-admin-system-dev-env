@@ -51,8 +51,10 @@ sudo puppet apply manifests/default.pp --debug --modulepath=/etc/puppet/modules:
 5. <del>Install Atom</del>
 
 ## Screencast (to GIF)
-`rm screencast.ogv; rm -Rf screencast`
-`recordmydesktop --output=screencast.ogv`
-`mplayer -ao null screencast.ogv -vo jpeg:outdir=screencast`
-`convert screencast/* screencast.gif`
-`rm screencast.ogv; rm -Rf screencast`
+````
+rm screencast.ogv; rm -Rf screencast
+recordmydesktop --output=screencast.ogv
+mplayer -ao null screencast.ogv -vo jpeg:outdir=screencast
+convert screencast/* screencast.gif
+rm screencast.ogv; rm -Rf screencast
+````
