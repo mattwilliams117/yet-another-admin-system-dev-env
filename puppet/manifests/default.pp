@@ -49,6 +49,12 @@ include 'google_chrome'
 package { 'gpgv2':  ensure  => latest, require  => Exec['apt-get update'], }
 package { 'rultor': ensure => 'installed', provider => 'gem', }
 
+# Screencasts: http://askubuntu.com/questions/107726/how-to-create-animated-gif-images-of-a-screencast
+# Also see the README for more instructions
+package { "imagemagick":  ensure  => latest, require  => Exec['apt-get update'], }
+package { "mplayer":  ensure  => latest, require  => Exec['apt-get update'], }
+package { "gtk-recordmydesktop":  ensure  => latest, require  => Exec['apt-get update'], }
+
 # Maven
 $servers = [
   { id => "github", username => "pas-jenkins", password => "london10", },
