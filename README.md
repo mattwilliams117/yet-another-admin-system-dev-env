@@ -65,3 +65,81 @@ OR
 `byzanz-record --duration=15 screencast.gif`
 
 `byzanz-record --duration=15 --x=200 --y=300 --width=700 --height=400 screencast.gif`
+
+## Yaas Setup
+1. Install libraries to workaround Vargrant issues: `sudo apt install zlib1g-dev`
+2. Install Vagrant and Virtual Box: `sudo apt-get -y install vagrant virtualbox`
+3. clone the vagrant repo: `git clone https://github.com/jeromebridge/yet-another-admin-system-dev-env`
+4. change directory into the cloned repository: `cd yet-another-admin-system-dev-env`
+5. Start Vagrant: `vagrant up`
+6. After Vagrant has completed you should see a VirtualBox window open. Navigate to it and login using the credentials `vagrant / vagrant`
+
+### UI Development
+1. Run the Yaas backend Service:
+    1. Make temp directory for Yaas: `mkdir /tmp/yaas`
+    2. Download and Run Yaas Docker image: `sudo docker run -d --name=app --link db:db -p 8080:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
+2. Clone the UI project: `git clone https://github.com/jeromebridge/yet-another-admin-system-web.git`
+3. Change directory to project: `cd yet-another-admin-system-web`
+4. Install UI Dependencies: `npm install`
+5. Run the UI: `export INTEGRATED=true; export YAASURL=http://localhost:8080; npm run dev`
+
+### Backend Development
+1. Clone the Backend project: `git clone https://github.com/jeromebridge/yet-another-admin-system.git`
+2. Change directory to the project: `cd yet-another-admin-system`
+3. Maven build: `mvn clean install`
+4. Open Eclipse
+    1. Switch to `Git` perspective
+    2. Add an existing local Git Repository; select the `yet-another-admin-system` directory you cloned earlier
+    3. Right click the `Working Directory` and select `Import Projects...`
+    4. Check `Import Existing Projects`
+    5. Click `Next`
+    6. Uncheck `hello-maven-plugin`, `yaas-dto-generator`, `yaas-codegen-plugin` and click Finish
+    7. Go back to `Java` perspective
+    8. Right click on of the projects and select `Maven Update...`
+    9. Click `Select All` and then `OK`
+    10. Eclipse will show some errors and may even give a popup. Delete the errors from the `Problems` view and restart Eclipse
+    11. `Clean all` projects when Eclipse comes back
+    12. `Refresh` all the projects afer clean all completes
+5. Open Terminal again
+6. Clone the Boot project: `git clone https://github.com/jeromebridge/yet-another-admin-system-boot.git`
+7. Change directory to project: `cd yet-another-admin-system-boot`
+8. Run application server: `./gradlew setupVirgoNoYaas runVirgo`
+9. Open a New Terminal window
+10. Connect to the application server: `rm -Rf ~/.ssh/known_hosts; ssh admin@localhost -p2502`
+11. Password: `springsource`
+12. Deploy the code from your Eclipse environment (Use the path you cloned the `yet-another-admin-system` project to): `m2e:deploy -r /home/vagrant/git/yet-another-admin-system`
+
+### Known Issues
+#### The configured module path doesn't exist: /home/user1/yet-another-admin-system-dev-env/puppet/modules
+The is a bug in the source code that does not create the modules folder under the puppet folder.
+##### Workaround
+1. Create the directory: `mkdir puppet/modules`
+2. Rerun vagrant: `vagrant up`
+
+#### Unknown configuration section 'librarian_puppet'.
+````
+user1@user1-Serval-WS:~/yet-another-admin-system-dev-env$ vagrant up
+Installing the 'vagrant-hostsupdater' plugin. This can take a few minutes...
+Installed the plugin 'vagrant-hostsupdater (1.0.2)'!
+Installing the 'vagrant-librarian-puppet' plugin. This can take a few minutes...
+Installed the plugin 'vagrant-librarian-puppet (0.9.2)'!
+Bringing machine 'default' up with 'virtualbox' provider...
+There are errors in the configuration of this machine. Please fix
+the following errors and try again:
+
+Vagrant:
+Unknown configuration section 'librarian_puppet'.
+````
+##### Workaround
+1. Rerun the `vagrant up` command again.
+
+#### Vagrant Finishes With Non-Zero Return
+````
+The SSH command responded with a non-zero exit status. Vagrant
+assumes that this means the command failed. The output for this command
+should be in the log above. Please read the output to determine what
+went wrong.
+````
+This happens because some of the sequence that vagrant runs is not correct.
+##### Workaround
+1. Rerun the Vagrant configuration only: `vagrant provision`
