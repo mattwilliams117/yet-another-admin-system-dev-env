@@ -77,11 +77,16 @@ OR
 ### UI Development
 1. Run the Yaas backend Service:
     1. Make temp directory for Yaas: `mkdir /tmp/yaas`
-    2. Download and Run Yaas Docker image: `sudo docker run -d --name=app --link db:db -p 8080:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
+    2. Download and Run Yaas Docker image: `sudo docker run -d --name=app --link db:db -p 8081:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
 2. Clone the UI project: `git clone https://github.com/jeromebridge/yet-another-admin-system-web.git`
 3. Change directory to project: `cd yet-another-admin-system-web`
 4. Install UI Dependencies: `npm install`
 5. Run the UI: `export INTEGRATED=true; export YAASURL=http://localhost:8080; npm run dev`
+
+#### Restart Backend Service
+1. Check if backend is already running on docker: `sudo docker ps -a`
+2. If it is running then stop and remove the app: `sudo docker stop app; sudo docker rm app`
+3. Start the service again: `sudo docker run -d --name=app --link db:db -p 8081:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
 
 ### Backend Development
 1. Clone the Backend project: `git clone https://github.com/jeromebridge/yet-another-admin-system.git`
