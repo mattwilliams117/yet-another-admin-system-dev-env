@@ -87,6 +87,7 @@ OR
 1. Check if backend is already running on docker: `sudo docker ps -a`
 2. If it is running then stop and remove the app: `sudo docker stop app; sudo docker rm app`
 3. Start the service again: `sudo docker run -d --name=app --link db:db -p 8081:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
+4. Tail the logs of the backend: `sudo docker logs -f app`
 
 ### Backend Development
 1. Clone the Backend project: `git clone https://github.com/jeromebridge/yet-another-admin-system.git`
