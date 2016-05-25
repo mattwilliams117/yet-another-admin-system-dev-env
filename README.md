@@ -89,6 +89,11 @@ OR
 3. Start the service again: `sudo docker run -d --name=app --link db:db -p 8081:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
 4. Tail the logs of the backend: `sudo docker logs -f app`
 
+#### Docker Database Is Down
+Sometimes the Database docker app goes down. In this case you have to tell docker to start it back up again.
+1. Check the status of the running containers in docker: `sudo docker ps -a`
+2. If the database status is "Exited" then you will need to start it again: `sudo docker start db`
+
 ### Backend Development
 1. Clone the Backend project: `git clone https://github.com/jeromebridge/yet-another-admin-system.git`
 2. Change directory to the project: `cd yet-another-admin-system`
