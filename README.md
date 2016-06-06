@@ -82,6 +82,9 @@ OR
 3. Change directory to project: `cd yet-another-admin-system-web`
 4. Install UI Dependencies: `npm install`
 5. Run the UI: `export INTEGRATED=true; export YAASURL=http://localhost:8081; npm run dev`
+6. Setup the Editor. Open `Atom`
+7. Click `File -> Add Project Folder...`
+8. Select the folder you downloaded from GitHub: `yet-another-admin-system-web`
 
 #### Restart Backend Service
 1. Check if backend is already running on docker: `sudo docker ps -a`
