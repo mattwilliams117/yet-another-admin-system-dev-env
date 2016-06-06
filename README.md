@@ -81,7 +81,7 @@ OR
 2. Clone the UI project: `git clone https://github.com/jeromebridge/yet-another-admin-system-web.git`
 3. Change directory to project: `cd yet-another-admin-system-web`
 4. Install UI Dependencies: `npm install`
-5. Run the UI: `export INTEGRATED=true; export YAASURL=http://localhost:8080; npm run dev`
+5. Run the UI: `export INTEGRATED=true; export YAASURL=http://localhost:8081; npm run dev`
 
 #### Restart Backend Service
 1. Check if backend is already running on docker: `sudo docker ps -a`

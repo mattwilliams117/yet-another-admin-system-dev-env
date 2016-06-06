@@ -21,10 +21,6 @@ package { "meld":  ensure  => latest, require  => Exec['apt-get update'], }
 # Launch4J Supporting Libraries
 package { ['lib32z1','lib32ncurses5', 'lib32bz2-1.0']:  ensure => latest, }
 
-# Brackets
-apt::ppa { 'ppa:webupd8team/brackets': notify => Exec['apt_update'] }
-package { "brackets":  ensure  => latest, require  => Exec['apt-get update'], }
-
 # Atom
 apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
 package { "atom":  ensure  => latest, require  => Exec['apt-get update'], }

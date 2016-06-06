@@ -10,6 +10,7 @@ apt-key adv --keyserver pgp.mit.edu --recv-keys 36A1D7869245C8950F966E92D8576A8B
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 
 apt-get update
+apt-get -y upgrade
 
 # DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
 DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
