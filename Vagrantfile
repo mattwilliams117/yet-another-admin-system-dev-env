@@ -41,7 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
   # config.ssh.forward_agent = true
-  config.ssh.username = "root"
+  config.ssh.username = "vagrant"
   config.ssh.password = "vagrant"
   config.ssh.insert_key = "true"
 
