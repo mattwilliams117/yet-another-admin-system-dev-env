@@ -8,7 +8,7 @@ package { "visualvm":  ensure  => latest }
 # Apt
 include apt
 exec { "apt-get update":
-    command => "/usr/bin/apt-get update",
+    command => "sudo /usr/bin/apt-get update",
     onlyif => "/bin/sh -c '[ ! -f /var/cache/apt/pkgcache.bin ] || /usr/bin/find /etc/apt/* -cnewer /var/cache/apt/pkgcache.bin | /bin/grep . > /dev/null'",
 }
 
@@ -22,8 +22,11 @@ package { "meld":  ensure  => latest, require  => Exec['apt-get update'], }
 package { ['lib32z1','lib32ncurses5', 'lib32bz2-1.0']:  ensure => latest, }
 
 # Atom
-apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
-package { "atom":  ensure  => latest, require  => Exec['apt-get update'], }
+exec { "add-atom-apt":
+    command => "sudo add-apt-repository -y ppa:webupd8team/atom"
+}
+#apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
+package { "atom":  ensure  => latest, require  => Exec['add-atom-apt', 'apt-get update'], }
 
 # package { 'git-diff':        ensure   => latest, provider => apm, require => Package['atom'], }
 package { 'language-puppet':   ensure   => latest, provider => apm, require => Package['atom'], }
@@ -37,7 +40,10 @@ package { 'xml-formatter':     ensure   => latest, provider => apm, require => P
 exec { 'apm install react xml-formatter': }
 
 # NodeJS
-package { "nodejs":  ensure  => latest }
+exec { "nodejs dependency":
+    command => "sudo apt-get -y install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++"
+}
+package { "nodejs":  ensure  => latest, require  => Exec['nodejs dependency'], }
 
 # Chrome
 include 'google_chrome'
