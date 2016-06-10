@@ -22,9 +22,11 @@ package { "meld":  ensure  => latest, require  => Exec['apt-get update'], }
 package { ['lib32z1','lib32ncurses5', 'lib32bz2-1.0']:  ensure => latest, }
 
 # Atom
-include apt::update
-apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
-package { "atom":  ensure  => latest, require  => Exec['apt-get update'], }
+exec { "add-atom-apt":
+  command => "sudo add-apt-repository -y ppa:webupd8team/atom; sudo apt-get update"
+}
+#apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
+package { "atom":  ensure  => latest, require  => Exec['add-atom-apt', 'apt-get update'], }
 
 # package { 'git-diff':        ensure   => latest, provider => apm, require => Package['atom'], }
 package { 'language-puppet':   ensure   => latest, provider => apm, require => Package['atom'], }
