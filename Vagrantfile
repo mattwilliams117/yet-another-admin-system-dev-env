@@ -114,9 +114,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.module_path = "puppet/modules"
     puppet.manifests_path = "puppet/manifests"
     puppet.options = "--verbose --debug --ordering=manifest --hiera_config puppet/hiera.yaml"
-    puppet.facter = {
-      "firstup" => ENV['FIRSTUP'] ? ENV['FIRSTUP'] : 'ALREADYUP'
-	}
   end
 
   # config.vm.provision "chef_solo" do |chef|
