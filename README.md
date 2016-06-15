@@ -122,13 +122,13 @@ Sometimes the Database docker app goes down. In this case you have to tell docke
 12. Deploy the code from your Eclipse environment (Use the path you cloned the `yet-another-admin-system` project to): `m2e:deploy -r /home/vagrant/git/yet-another-admin-system`
 
 ### Known Issues
-#### The configured module path doesn't exist: /home/user1/yet-another-admin-system-dev-env/puppet/modules
+#### 1. The configured module path doesn't exist: /home/user1/yet-another-admin-system-dev-env/puppet/modules
 The is a bug in the source code that does not create the modules folder under the puppet folder.
 ##### Workaround
 1. Create the directory: `mkdir puppet/modules`
 2. Rerun vagrant: `vagrant up`
 
-#### Unknown configuration section 'librarian_puppet'.
+#### 2. Unknown configuration section 'librarian_puppet'.
 ````
 user1@user1-Serval-WS:~/yet-another-admin-system-dev-env$ vagrant up
 Installing the 'vagrant-hostsupdater' plugin. This can take a few minutes...
@@ -145,7 +145,7 @@ Unknown configuration section 'librarian_puppet'.
 ##### Workaround
 1. Rerun the `vagrant up` command again.
 
-#### Vagrant Finishes With Non-Zero Return
+#### 3. Vagrant Finishes With Non-Zero Return
 ````
 The SSH command responded with a non-zero exit status. Vagrant
 assumes that this means the command failed. The output for this command
@@ -157,7 +157,7 @@ This happens because some of the sequence that vagrant runs is not correct.
 1. Rerun the Vagrant configuration only: `vagrant provision`
 
 
-#### The box 'box-cutter/ubuntu1404-desktop' could not be found.
+#### 4. The box 'box-cutter/ubuntu1404-desktop' could not be found.
 You are likely using an older version of vagrant (1.4.x), which can't download the box properly.
 ##### Workaround
 1. Download Vagrant 1.8.1 package from `https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb`
@@ -165,14 +165,14 @@ You are likely using an older version of vagrant (1.4.x), which can't download t
 3. `sudo dpkg -i vagrant_1.8.1_x86_64.deb`
 4. Rerun the `vagrant up` command again.
 
-#### Could not locate the bindings file
+#### 5. Could not locate the bindings file
 You get this error when starting the UI
 ##### Workaround
 1. Delete everything from `/vagrant/yet-another-admin-system-web/node_modules` folder
 2. CD to `/vagrant/yet-another-admin-system-web`
 3. Run `npm install`
 
-#### Error Starting Vagrant:
+#### 6. Error Starting Vagrant:
 ```
 paul@PAULS:~/workspaces/Yaas/yet-another-admin-system-dev-env$ vagrant upInstalling the 'vagrant-librarian-puppet' plugin. This can take a few minutes...
 /usr/lib/ruby/1.9.1/rubygems/installer.rb:562:in `rescue in block in build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
