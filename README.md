@@ -165,14 +165,20 @@ You are likely using an older version of vagrant (1.4.x), which can't download t
 3. `sudo dpkg -i vagrant_1.8.1_x86_64.deb`
 4. Rerun the `vagrant up` command again.
 
-#### 5. Could not locate the bindings file
+#### 5. Cannot find module ... (any module)
+You get this error when starting the UI
+##### Workaround
+1. CD to `/vagrant/yet-another-admin-system-web`
+2. Run `npm install`
+
+#### 6. Could not locate the bindings file
 You get this error when starting the UI
 ##### Workaround
 1. Delete everything from `/vagrant/yet-another-admin-system-web/node_modules` folder
 2. CD to `/vagrant/yet-another-admin-system-web`
 3. Run `npm install`
 
-#### 6. Error Starting Vagrant:
+#### 7. Error Starting Vagrant:
 ```
 paul@PAULS:~/workspaces/Yaas/yet-another-admin-system-dev-env$ vagrant upInstalling the 'vagrant-librarian-puppet' plugin. This can take a few minutes...
 /usr/lib/ruby/1.9.1/rubygems/installer.rb:562:in `rescue in block in build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
