@@ -166,3 +166,10 @@ You are likely using an older version of vagrant (1.4.x), which can't download t
 2. CD to the download location
 3. `sudo dpkg -i vagrant_1.8.1_x86_64.deb`
 4. Rerun the `vagrant up` command again.
+
+#### Could not locate the bindings file
+You get this error when starting the UI
+##### Workaround
+1. Delete everything from `/vagrant/yet-another-admin-system-web/node_modules` folder
+2. CD to `/vagrant/yet-another-admin-system-web`
+3. Run `npm install`
