@@ -28,14 +28,14 @@ exec { "add-atom-apt":
 #apt::ppa { 'ppa:webupd8team/atom': notify => Exec['apt_update'] }
 package { "atom":  ensure  => latest, require  => Exec['add-atom-apt', 'apt-get update'], }
 
-# package { 'git-diff':        ensure   => latest, provider => apm, require => Package['atom'], }
-package { 'language-puppet':   ensure   => latest, provider => apm, require => Package['atom'], }
-package { 'linter':            ensure   => latest, provider => apm, require => Package['atom'], }
-package { 'linter-eslint':     ensure   => latest, provider => apm, require => Package['atom'], }
-package { 'node-debugger':     ensure   => latest, provider => apm, require => Package['atom'], }
-package { 'mocha-test-runner': ensure   => latest, provider => apm, require => Package['atom'], }
-package { 'react':             ensure   => latest, provider => apm, require => Package['atom'], }
-package { 'xml-formatter':     ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'language-puppet':      ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'linter':               ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'linter-eslint':        ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'node-debugger':        ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'mocha-test-runner':    ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'react':                ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'xml-formatter':        ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'eclipse-keybindings':  ensure   => latest, provider => apm, require => Package['atom'], }
 
 exec { 'apm install react xml-formatter': }
 
