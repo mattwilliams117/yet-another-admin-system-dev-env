@@ -35,10 +35,24 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 
 
 ## Debugging (Puppet)
-````
+```
 cd /vagrant/puppet
 sudo puppet apply manifests/default.pp --debug --modulepath=/etc/puppet/modules:modules --hiera_config=hiera.yaml --ordering=manifest
-````
+```
+
+## Screencast (to GIF)
+http://askubuntu.com/questions/107726/how-to-create-animated-gif-images-of-a-screencast
+```
+rm screencast.ogv; rm -Rf screencast
+recordmydesktop --output=screencast.ogv
+mplayer -ao null screencast.ogv -vo jpeg:outdir=screencast
+convert screencast/* screencast.gif
+rm screencast.ogv; rm -Rf screencast
+```
+OR
+`byzanz-record --duration=15 screencast.gif`
+`byzanz-record --duration=15 --x=200 --y=300 --width=700 --height=400 screencast.gif`
+
 
 ## Todo
 1. <del>Setup Maven `settings.xml`</del>
@@ -49,22 +63,6 @@ sudo puppet apply manifests/default.pp --debug --modulepath=/etc/puppet/modules:
     7. Need to have the git user somewhere when they setup through vagrant
 4. Get Repositories?
 5. <del>Install Atom</del>
-
-## Screencast (to GIF)
-http://askubuntu.com/questions/107726/how-to-create-animated-gif-images-of-a-screencast
-
-````
-rm screencast.ogv; rm -Rf screencast
-recordmydesktop --output=screencast.ogv
-mplayer -ao null screencast.ogv -vo jpeg:outdir=screencast
-convert screencast/* screencast.gif
-rm screencast.ogv; rm -Rf screencast
-````
-
-OR
-`byzanz-record --duration=15 screencast.gif`
-
-`byzanz-record --duration=15 --x=200 --y=300 --width=700 --height=400 screencast.gif`
 
 ## Yaas Setup
 1. Install libraries to workaround Vargrant issues: `sudo apt install zlib1g-dev`
@@ -81,7 +79,10 @@ OR
 2. Clone the UI project: `git clone https://github.com/jeromebridge/yet-another-admin-system-web.git`
 3. Change directory to project: `cd yet-another-admin-system-web`
 4. Install UI Dependencies: `npm install`
-5. Run the UI: `export INTEGRATED=true; export YAASURL=http://localhost:8080; npm run dev`
+5. Run the UI: `export INTEGRATED=true; export YAASURL=http://localhost:8081; npm run dev`
+6. Setup the Editor. Open `Atom`
+7. Click `File -> Add Project Folder...`
+8. Select the folder you downloaded from GitHub: `yet-another-admin-system-web`
 
 #### Restart Backend Service
 1. Check if backend is already running on docker: `sudo docker ps -a`
@@ -121,13 +122,13 @@ Sometimes the Database docker app goes down. In this case you have to tell docke
 12. Deploy the code from your Eclipse environment (Use the path you cloned the `yet-another-admin-system` project to): `m2e:deploy -r /home/vagrant/git/yet-another-admin-system`
 
 ### Known Issues
-#### The configured module path doesn't exist: /home/user1/yet-another-admin-system-dev-env/puppet/modules
+#### 1. The configured module path doesn't exist: /home/user1/yet-another-admin-system-dev-env/puppet/modules
 The is a bug in the source code that does not create the modules folder under the puppet folder.
 ##### Workaround
 1. Create the directory: `mkdir puppet/modules`
 2. Rerun vagrant: `vagrant up`
 
-#### Unknown configuration section 'librarian_puppet'.
+#### 2. Unknown configuration section 'librarian_puppet'.
 ````
 user1@user1-Serval-WS:~/yet-another-admin-system-dev-env$ vagrant up
 Installing the 'vagrant-hostsupdater' plugin. This can take a few minutes...
@@ -144,7 +145,7 @@ Unknown configuration section 'librarian_puppet'.
 ##### Workaround
 1. Rerun the `vagrant up` command again.
 
-#### Vagrant Finishes With Non-Zero Return
+#### 3. Vagrant Finishes With Non-Zero Return
 ````
 The SSH command responded with a non-zero exit status. Vagrant
 assumes that this means the command failed. The output for this command
@@ -154,3 +155,99 @@ went wrong.
 This happens because some of the sequence that vagrant runs is not correct.
 ##### Workaround
 1. Rerun the Vagrant configuration only: `vagrant provision`
+
+
+#### 4. The box 'box-cutter/ubuntu1404-desktop' could not be found.
+You are likely using an older version of vagrant (1.4.x), which can't download the box properly.
+##### Workaround
+1. Download Vagrant 1.8.1 package from `https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb`
+2. CD to the download location
+3. `sudo dpkg -i vagrant_1.8.1_x86_64.deb`
+4. Rerun the `vagrant up` command again.
+
+#### 5. Cannot find module ... (any module)
+You get this error when starting the UI
+##### Workaround
+1. CD to `/vagrant/yet-another-admin-system-web`
+2. Run `npm install`
+
+#### 6. Could not locate the bindings file
+You get this error when starting the UI
+##### Workaround
+1. Delete everything from `/vagrant/yet-another-admin-system-web/node_modules` folder
+2. CD to `/vagrant/yet-another-admin-system-web`
+3. Run `npm install`
+
+#### 7. Error Starting Vagrant:
+```
+paul@PAULS:~/workspaces/Yaas/yet-another-admin-system-dev-env$ vagrant upInstalling the 'vagrant-librarian-puppet' plugin. This can take a few minutes...
+/usr/lib/ruby/1.9.1/rubygems/installer.rb:562:in `rescue in block in build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
+
+        /usr/bin/ruby1.9.1 extconf.rb
+/usr/lib/ruby/1.9.1/rubygems/custom_require.rb:36:in `require': cannot load such file -- mkmf (LoadError)
+	from /usr/lib/ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from extconf.rb:1:in `<main>'
+
+
+Gem files will remain installed in /home/paul/.vagrant.d/gems/gems/json-1.8.3 for inspection.
+Results logged to /home/paul/.vagrant.d/gems/gems/json-1.8.3/ext/json/ext/generator/gem_make.out
+	from /usr/lib/ruby/1.9.1/rubygems/installer.rb:540:in `block in build_extensions'
+	from /usr/lib/ruby/1.9.1/rubygems/installer.rb:515:in `each'
+	from /usr/lib/ruby/1.9.1/rubygems/installer.rb:515:in `build_extensions'
+	from /usr/lib/ruby/1.9.1/rubygems/installer.rb:180:in `install'
+	from /usr/lib/ruby/1.9.1/rubygems/dependency_installer.rb:297:in `block in install'
+	from /usr/lib/ruby/1.9.1/rubygems/dependency_installer.rb:270:in `each'
+	from /usr/lib/ruby/1.9.1/rubygems/dependency_installer.rb:270:in `each_with_index'
+	from /usr/lib/ruby/1.9.1/rubygems/dependency_installer.rb:270:in `install'
+	from /usr/share/vagrant/plugins/commands/plugin/action/install_gem.rb:65:in `block in call'
+	from /usr/share/vagrant/plugins/commands/plugin/gem_helper.rb:42:in `block in with_environment'
+	from /usr/lib/ruby/1.9.1/rubygems/user_interaction.rb:40:in `use_ui'
+	from /usr/share/vagrant/plugins/commands/plugin/gem_helper.rb:41:in `with_environment'
+	from /usr/share/vagrant/plugins/commands/plugin/action/install_gem.rb:52:in `call'
+	from /usr/lib/ruby/vendor_ruby/vagrant/action/warden.rb:34:in `call'
+	from /usr/share/vagrant/plugins/commands/plugin/action/bundler_check.rb:20:in `call'
+	from /usr/lib/ruby/vendor_ruby/vagrant/action/warden.rb:34:in `call'
+	from /usr/lib/ruby/vendor_ruby/vagrant/action/builder.rb:116:in `call'
+	from /usr/lib/ruby/vendor_ruby/vagrant/action/runner.rb:69:in `block in run'
+	from /usr/lib/ruby/vendor_ruby/vagrant/util/busy.rb:19:in `busy'
+	from /usr/lib/ruby/vendor_ruby/vagrant/action/runner.rb:69:in `run'
+	from /usr/share/vagrant/plugins/commands/plugin/command/base.rb:17:in `action'
+	from /usr/share/vagrant/plugins/commands/plugin/command/install.rb:27:in `execute'
+	from /usr/share/vagrant/plugins/commands/plugin/command/root.rb:56:in `execute'
+	from /usr/lib/ruby/vendor_ruby/vagrant/cli.rb:38:in `execute'
+	from /usr/lib/ruby/vendor_ruby/vagrant/environment.rb:484:in `cli'
+	from /usr/bin/vagrant:127:in `<main>'
+Bringing machine 'default' up with 'virtualbox' provider...
+There are errors in the configuration of this machine. Please fix
+the following errors and try again:
+
+vm:
+* The box 'box-cutter/ubuntu1404-desktop' could not be found.
+
+Vagrant:
+* Unknown configuration section 'librarian_puppet'.
+```
+A few problems here:
+1. Install `ruby-dev`
+    ```
+    sudo apt-get install ruby-dev
+    ```
+2. Remove vagrant cached plugins
+    ```
+    rm -Rf ~/.vagrant.d
+    ```
+3. You must also download and install vagrant version 1.7.4 from the web site.  (no automatic update available)
+4. Upgrade Ruby to version above 2
+    ```
+    sudo apt-get update
+    sudo apt-get install build-essential make curl
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    \curl -sSL https://get.rvm.io | bash -s stable
+    source ~/.bash_profile
+    rvm install ruby-2.1.4
+    
+    rvm list
+    rvm use --default ruby-2.1.4
+    ```
+    Check http://stackoverflow.com/questions/26595620/how-to-install-ruby-2-1-4-on-ubuntu-14-04 for more details on the instructions above.
+
