@@ -1,16 +1,19 @@
 # What is an OS agnostic workstation.
 Exec { path => ["/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/"] }
 
-# Java
-package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:  ensure => latest, }
-package { "visualvm":  ensure  => latest }
-
 # Apt
 include apt
 exec { "apt-get update":
     command => "sudo /usr/bin/apt-get update",
     onlyif => "/bin/sh -c '[ ! -f /var/cache/apt/pkgcache.bin ] || /usr/bin/find /etc/apt/* -cnewer /var/cache/apt/pkgcache.bin | /bin/grep . > /dev/null'",
 }
+
+# Java
+exec { "add-java-7-apt":
+  command => "sudo add-apt-repository -y ppa:openjdk-r/ppa; sudo apt-get update"
+}
+package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:  ensure => latest, require  => Exec['add-java-7-apt', 'apt-get update'], }
+package { "visualvm":  ensure  => latest }
 
 # Gimp
 package { "gimp":  ensure  => latest, require  => Exec['apt-get update'], }
@@ -19,7 +22,8 @@ package { "gimp":  ensure  => latest, require  => Exec['apt-get update'], }
 package { "meld":  ensure  => latest, require  => Exec['apt-get update'], }
 
 # Launch4J Supporting Libraries
-package { ['lib32z1','lib32ncurses5', 'lib32bz2-1.0']:  ensure => latest, }
+# package { ['lib32z1', 'lib32ncurses5', 'lib32bz2-1.0']:  ensure => latest, } # 14.04 version
+package { ['libz1:i386', 'libncurses5:i386', 'libbz2-1.0:i386', 'libstdc++6:i386']:  ensure => latest, } # 16.04 version
 
 # Atom
 exec { "add-atom-apt":

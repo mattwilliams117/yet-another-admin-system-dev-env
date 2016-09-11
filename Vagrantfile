@@ -17,7 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   # config.vm.box = "jhartman/xubuntu14.04.1"
-  config.vm.box = "box-cutter/ubuntu1404-desktop"
+  # config.vm.box = "boxcutter/ubuntu1604-desktop"
+  config.vm.box = "bstoots/xubuntu-16.04-desktop-amd64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -62,6 +63,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.cpus = 2
     vb.customize ["modifyvm", :id, "--memory", "10240"]
+    vb.customize ["modifyvm", :id, "--vram", "12"] # MB
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
     vb.customize ["modifyvm", :id, "--accelerate3d", "off"]
   end
