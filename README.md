@@ -90,6 +90,11 @@ OR
 3. Start the service again: `sudo docker run -d --name=app --link db:db -p 8081:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
 4. Tail the logs of the backend: `sudo docker logs -f app`
 
+##### Quick One Line Command
+````
+sudo docker start db; sudo docker stop app; sudo docker rm app; sudo docker run -d --name=app --link db:db -p 8081:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system; sudo docker logs -f app
+````
+
 #### Docker Database Is Down
 Sometimes the Database docker app goes down. In this case you have to tell docker to start it back up again.
 1. Check the status of the running containers in docker: `sudo docker ps -a`
