@@ -126,6 +126,33 @@ Sometimes the Database docker app goes down. In this case you have to tell docke
 11. Password: `springsource`
 12. Deploy the code from your Eclipse environment (Use the path you cloned the `yet-another-admin-system` project to): `m2e:deploy -r /home/vagrant/git/yet-another-admin-system`
 
+### Docker Only
+#### Setup AWS
+1. Create a directory `~/.aws`
+2. Create a file `~/.aws/credentials`
+````
+[default]
+aws_access_key_id=AKIAJUKBYCJZU2IRKNRQ
+aws_secret_access_key=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
+````
+3. Create a file `~/.aws/config`
+````
+[default]
+region=us-east-1
+output=json
+````
+4. Initialize Docker
+````
+eval "$(docker run --volume ~/.aws:/root/.aws cgswong/aws:latest aws ecr get-login)"
+````
+5. Start Containers
+````
+sudo docker stop front; sudo docker rm front; sudo docker stop app; sudo docker rm app; sudo docker stop db; sudo docker rm db;
+sudo docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:master-d5147492115ddb39282faf73e424be41
+sudo docker run -d --name=app --link db:db -p 8081:8080 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
+sudo docker run -d --name=front --link app:app -p 8082:8080 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
+````
+
 ### Known Issues
 #### 1. The configured module path doesn't exist: /home/user1/yet-another-admin-system-dev-env/puppet/modules
 The is a bug in the source code that does not create the modules folder under the puppet folder.
@@ -250,9 +277,8 @@ A few problems here:
     \curl -sSL https://get.rvm.io | bash -s stable
     source ~/.bash_profile
     rvm install ruby-2.1.4
-    
+
     rvm list
     rvm use --default ruby-2.1.4
     ```
     Check http://stackoverflow.com/questions/26595620/how-to-install-ruby-2-1-4-on-ubuntu-14-04 for more details on the instructions above.
-
