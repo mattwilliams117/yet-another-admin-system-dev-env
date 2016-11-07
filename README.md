@@ -132,8 +132,8 @@ Sometimes the Database docker app goes down. In this case you have to tell docke
 2. Create a file `~/.aws/credentials`
 ````
 [default]
-aws_access_key_id=AKIAJUKBYCJZU2IRKNRQ
-aws_secret_access_key=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
+aws_access_key_id=XXX
+aws_secret_access_key=XXX
 ````
 3. Create a file `~/.aws/config`
 ````
