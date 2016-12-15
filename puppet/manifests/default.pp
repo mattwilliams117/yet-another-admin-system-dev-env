@@ -9,10 +9,7 @@ exec { "apt-get update":
 }
 
 # Java
-exec { "add-java-7-apt":
-  command => "sudo add-apt-repository -y ppa:openjdk-r/ppa; sudo apt-get update"
-}
-package { ['openjdk-7-jdk','openjdk-7-jre', 'openjdk-7-jre-headless']:  ensure => latest, require  => Exec['add-java-7-apt', 'apt-get update'], }
+package { ['openjdk-8-jdk','openjdk-8-jre', 'openjdk-8-jre-headless']:  ensure => latest, }
 package { "visualvm":  ensure  => latest }
 
 # Gimp
