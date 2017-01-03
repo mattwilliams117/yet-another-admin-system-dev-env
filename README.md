@@ -140,7 +140,7 @@ output=json
 ````
 4. Initialize Docker
 ````
-eval "$(sudo docker run --volume ~/.aws:/root/.aws cgswong/aws:latest aws ecr get-login)"
+eval "$(docker run --volume ~/.aws:/root/.aws cgswong/aws:latest aws ecr get-login)"
 ````
 5. Stop All
 ````
