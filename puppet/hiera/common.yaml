@@ -3,6 +3,7 @@ eclipse::release_name: luna
 eclipse::service_release: SR2
 # eclipse::owner_group: wheel
 eclipse::plugin::egit::method: p2_director
+eclipse::plugin::bndtools::method: p2_director
 eclipse::plugin::web::method: p2_director
 eclipse::plugin::mylyn::method: p2_director
 eclipse::plugin::pdt::method: p2_director

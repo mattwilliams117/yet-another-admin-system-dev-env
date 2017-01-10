@@ -109,7 +109,7 @@ include eclipse::plugin::m2e_aspectj
 include eclipse::plugin::m2e_buildhelper
 include eclipse::plugin::m2e_apt
 include eclipse::plugin::jd
-
+include eclipse::plugin::bndtools
 
 
 # exec { 'fix-eclipse-memory1':
