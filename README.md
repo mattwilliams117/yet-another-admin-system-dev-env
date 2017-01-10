@@ -113,21 +113,18 @@ Sometimes the Database docker app goes down. In this case you have to tell docke
     3. Right click the `Working Directory` and select `Import Projects...`
     4. Check `Import Existing Projects`
     5. Click `Next`
-    6. Uncheck `hello-maven-plugin`, `yaas-dto-generator`, `yaas-codegen-plugin` and click Finish
+    6. Uncheck `hello-maven-plugin`, `yaas-dto-generator`, `yaas-codegen-plugin`, `workflow`, `workflow api`, `yaas-ws`, `ws client` and click Finish
     7. Go back to `Java` perspective
     8. Right click on of the projects and select `Maven Update...`
     9. Click `Select All` and then `OK`
     10. Eclipse will show some errors and may even give a popup. Delete the errors from the `Problems` view and restart Eclipse
     11. `Clean all` projects when Eclipse comes back
     12. `Refresh` all the projects afer clean all completes
-5. Open Terminal again
-6. Clone the Boot project: `git clone https://github.com/jeromebridge/yet-another-admin-system-boot.git`
-7. Change directory to project: `cd yet-another-admin-system-boot`
-8. Run application server: `./gradlew setupVirgoNoYaas runVirgo`
-9. Open a New Terminal window
-10. Connect to the application server: `rm -Rf ~/.ssh/known_hosts; ssh admin@localhost -p2502`
-11. Password: `springsource`
-12. Deploy the code from your Eclipse environment (Use the path you cloned the `yet-another-admin-system` project to): `m2e:deploy -r /home/vagrant/git/yet-another-admin-system`
+5. Find the TestDev file.  Right click > Run As... > Test NG Test
+6. Wait a few moments for it to boot and then Open another Terminal
+7. Connect to the application server: `rm -Rf ~/.ssh/known_hosts; ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss admin@localhost -p2502`
+8. Password: `admin`
+9. Deploy the code from your Eclipse environment (Use the path you cloned the `yet-another-admin-system` project to): `m2e:deploy -r -f /home/vagrant/yet-another-admin-system`  (For Subsequent Deploys you should do a partial deployment: `yet-another-admin-system` project to): `m2e:deploy -r /home/vagrant/yet-another-admin-system`)
 
 ### Docker Only
 #### Setup AWS
