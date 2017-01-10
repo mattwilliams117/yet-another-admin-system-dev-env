@@ -32,7 +32,10 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * Kdenlive (for video editing)?
 * <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)
 * <del>Gradle? (I may not because I kind of like the idea of each project bootstraping their own Gradle version)</del>
-
+* BndTools
+* JPM4J
+* BND
+* OSGi Deployer CLI
 
 ## Debugging (Puppet)
 ```
