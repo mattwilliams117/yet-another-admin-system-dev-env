@@ -67,13 +67,31 @@ OR
 4. Get Repositories?
 5. <del>Install Atom</del>
 
-## Yaas Setup
+## Setup
 1. Install libraries to workaround Vargrant issues: `sudo apt install zlib1g-dev`
 2. Install Vagrant and Virtual Box: `sudo apt-get -y install vagrant virtualbox`
 3. clone the vagrant repo: `git clone https://github.com/jeromebridge/yet-another-admin-system-dev-env`
 4. change directory into the cloned repository: `cd yet-another-admin-system-dev-env`
 5. Start Vagrant: `vagrant up`
 6. After Vagrant has completed you should see a VirtualBox window open. Navigate to it and login using the credentials `vagrant / vagrant`
+
+### Workarounds
+1. Install missing Atom plugins (Issues #5, #17)
+````
+apm install language-puppet linter linter-eslint node-debugger mocha-test-runner react xml-formatter eclipse-keybindings split-diff
+````
+2. Add user to Docker group (Issue #16)
+````
+sudo usermod -aG docker $USER
+````
+3. Increase Max Number Of Files That Can Be Monitored (Issue #11)
+````
+echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+````
+4. Reload vagrant (Issue #11) -- from host machine
+````
+vagrant reload
+````
 
 ### UI Development
 1. Run the Yaas backend Service:
