@@ -98,6 +98,22 @@ class { "squirrel_sql":
   ]
 }
 
+# JPM4J / BND
+class jpm4j {
+  archive::download { 'jpm4j.jar':
+    url              => 'https://github.com/jpm4j/jpm4j.installers/raw/master/dist/biz.aQute.jpm.run.jar',
+    checksum         => false,
+    follow_redirects => true,
+  } ->
+  exec { "install-jpm4j":
+    command => "sudo java -jar /usr/src/jpm4j.jar -g init"
+  } ->
+  exec { "install-bnd":
+    command => "sudo jpm install bnd@*"
+  }
+}
+include jpm4j
+
 # Eclipse
 include eclipse
 include eclipse::plugin::shelled
