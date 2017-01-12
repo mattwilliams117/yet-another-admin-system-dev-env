@@ -46,6 +46,12 @@ exec { "nodejs dependency":
 }
 package { "nodejs":  ensure  => latest, require  => Exec['nodejs dependency'], }
 
+# OSGi Deployer
+exec { "osgi deployer":
+    command => "sudo npm install -g osgi-deployer",
+    require => Package['nodejs']
+}
+
 # Chrome
 include 'google_chrome'
 

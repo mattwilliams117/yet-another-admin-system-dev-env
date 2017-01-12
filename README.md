@@ -11,8 +11,9 @@ Vagrant configuraiton for Yet Another Admin System development environment.
     * <del>Java Decompiler Plugin: Special instructions</del>
     * <del>buildhelper Maven Connector</del>
     * <del>m2e-apt Maven Connector</del>
-    * m2e
-    * m2e AspectJ Connector
+    * <del>m2e</del>
+    * <del>m2e AspectJ Connector</del>
+    * <del>BndTools</del>
 
 * <del>VisualVM</del>
 * <del>Java Decompiler</del>
@@ -32,9 +33,9 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * Kdenlive (for video editing)?
 * <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)
 * <del>Gradle? (I may not because I kind of like the idea of each project bootstraping their own Gradle version)</del>
-* BndTools
-* JPM4J
-* BND
+* <del>JPM4J</del>
+* <del>BND</del>
+* JDeploy (NPM)
 * OSGi Deployer CLI
 
 ## Debugging (Puppet)
