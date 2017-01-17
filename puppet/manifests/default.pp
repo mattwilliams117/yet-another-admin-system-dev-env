@@ -54,12 +54,14 @@ class { 'nodejs':
 package { 'jdeploy':
   ensure   => 'present',
   provider => 'npm',
+  require => Package['nodejs'],
 }
 
 # OSGi Deployer
-exec { "osgi deployer":
-    command => "sudo npm install -g osgi-deployer",
-    require => Package['nodejs']
+package { 'osgi-deployer':
+  ensure   => 'present',
+  provider => 'npm',
+  require => Package['nodejs'],
 }
 
 # Chrome
