@@ -30,7 +30,7 @@ sudo apt-get install apt-transport-https
 # sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
 
 # NodeJs Sources
-sudo curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+# sudo curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 
 sudo apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
@@ -42,16 +42,17 @@ sudo apt-get install -y apparmor apparmor-profiles apparmor-utils
 sudo apt-get install -y docker.io
 
 # Start Docker Image(s)
-CONTAINER=db
-RUNNING=$(docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
-if [ "$RUNNING" == "false" ]; then
-  sudo docker start $CONTAINER
-fi
-if [ "$RUNNING" == "" ]; then
-  sudo docker run -d --name=$CONTAINER -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
-fi
+# CONTAINER=db
+# RUNNING=$(docker inspect --format="{{ .State.Running }}" $CONTAINER 2> /dev/null)
+# if [ "$RUNNING" == "false" ]; then
+#   sudo docker start $CONTAINER
+# fi
+# if [ "$RUNNING" == "" ]; then
+#   sudo docker run -d --name=$CONTAINER -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
+# fi
 
 puppet module install --force puppetlabs-apt;
 puppet module install --force garethr/docker;
 puppet module install --force cyberious/apm
 puppet module install --force jamesnetherton-google_chrome
+puppet module install --force puppet-nodejs

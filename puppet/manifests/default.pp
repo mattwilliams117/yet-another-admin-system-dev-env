@@ -44,7 +44,17 @@ exec { 'apm install react xml-formatter': }
 exec { "nodejs dependency":
     command => "sudo apt-get -y install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++"
 }
-package { "nodejs":  ensure  => latest, require  => Exec['nodejs dependency'], }
+# package { "nodejs":  ensure  => latest, require  => Exec['nodejs dependency'], }
+class { 'nodejs':
+  repo_url_suffix => '5.x',
+  require => Exec['nodejs dependency'],
+}
+
+# JDeploy
+package { 'jdeploy':
+  ensure   => 'present',
+  provider => 'npm',
+}
 
 # OSGi Deployer
 exec { "osgi deployer":
