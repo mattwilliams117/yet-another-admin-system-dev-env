@@ -176,7 +176,7 @@ docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:master-d5147
 docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:master-d5147492115ddb39282faf73e424be41
 docker stop app; docker rm app;
 docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
-docker run -d --name=app --link db:db -p 8081:8080 -p 8001:8000 -p 61098:1098 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
+docker run -d --name=app --link db:db -p 8081:8080 -p 8001:8000 -p 61099:1099 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
 docker stop front; docker rm front;
 docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
 docker run -d --name=front --link app:app -p 8082:8080 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
