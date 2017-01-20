@@ -71,6 +71,24 @@ include 'google_chrome'
 package { 'gpgv2':  ensure  => latest, require  => Exec['apt-get update'], }
 package { 'rultor': ensure => 'installed', provider => 'gem', }
 
+# Codeship Jet
+class codeship_jet {
+  archive::download { 'jet-linux_amd64_1.15.4.tar.gz':
+    url              => "https://s3.amazonaws.com/codeship-jet-releases/1.15.4/jet-linux_amd64_1.15.4.tar.gz",
+    ensure           => present,
+    checksum         => false,
+    follow_redirects => true,
+    timeout          => 2120,
+  } ->
+  exec { 'jet extract':
+    command   => "tar -xaC /usr/local/bin -f /usr/src/jet-linux_amd64_1.15.4.tar.gz",
+  } ->
+  exec { 'jet permission':
+    command   => "chmod +x /usr/local/bin/jet",
+  }
+}
+include codeship_jet
+
 # Screencasts
 package { "imagemagick":  ensure  => latest, require  => Exec['apt-get update'], }
 package { "mplayer":  ensure  => latest, require  => Exec['apt-get update'], }

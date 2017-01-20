@@ -35,8 +35,9 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>Gradle? (I may not because I kind of like the idea of each project bootstraping their own Gradle version)</del>
 * <del>JPM4J</del>
 * <del>BND</del>
-* JDeploy (NPM)
-* OSGi Deployer CLI
+* <del>JDeploy (NPM)</del>
+* <del>OSGi Deployer CLI</del>
+* <del>Codeship Jet</del>
 
 ## Debugging (Puppet)
 ```
