@@ -38,6 +38,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>JDeploy (NPM)</del>
 * <del>OSGi Deployer CLI</del>
 * <del>Codeship Jet</del>
+* <del>VLC</del>
 
 ## Debugging (Puppet)
 ```

@@ -96,6 +96,9 @@ package { "gtk-recordmydesktop":  ensure  => latest, require  => Exec['apt-get u
 
 package { "byzanz":  ensure  => latest, require  => Exec['apt-get update'], }
 
+package { "vlc":  ensure  => latest, require  => Exec['apt-get update'], }
+package { "browser-plugin-vlc":  ensure  => latest, require  => Exec['apt-get update'], }
+
 # Maven
 $servers = [
   { id => "github", username => "pas-jenkins", password => "london10", },
