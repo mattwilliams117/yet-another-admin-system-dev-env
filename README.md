@@ -97,9 +97,7 @@ vagrant reload
 ````
 
 ### UI Development
-1. Run the Yaas backend Service:
-    1. Make temp directory for Yaas: `mkdir /tmp/yaas`
-    2. Download and Run Yaas Docker image: `sudo docker run -d --name=app --link db:db -p 8081:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
+1. Run the Yaas backend Service: See `Docker Only` section
 2. Clone the UI project: `git clone https://github.com/jeromebridge/yet-another-admin-system-web.git`
 3. Change directory to project: `cd yet-another-admin-system-web`
 4. Install UI Dependencies: `npm install`
