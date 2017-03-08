@@ -172,7 +172,7 @@ docker stop front; docker rm front; docker stop app; docker rm app; docker stop 
 ````
 docker stop db; docker rm db;
 docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
-docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
+docker run -d --name=db -p 5432:5432 -e DB_USER="super" -e DB_NAME="yaas" -e DB_PASS="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
 docker stop app; docker rm app;
 docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
 docker run -d --name=app --link db:db -p 8081:8080 -p 8001:8000 -p 11099:11099 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
