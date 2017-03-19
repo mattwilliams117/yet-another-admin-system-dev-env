@@ -205,6 +205,10 @@ Unknown configuration section 'librarian_puppet'.
 ##### Workaround
 1. Rerun the `vagrant up` command again.
 
+##### Possible Fix
+I may have found a workaround to this issue. Vagrant needs to be restarted if the plugin is installed.
+https://github.com/voxpupuli/vagrant-librarian-puppet/issues/6
+
 #### 3. Vagrant Finishes With Non-Zero Return
 ````
 The SSH command responded with a non-zero exit status. Vagrant
