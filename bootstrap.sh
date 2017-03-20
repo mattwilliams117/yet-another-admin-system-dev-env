@@ -56,3 +56,7 @@ puppet module install --force garethr/docker;
 puppet module install --force cyberious/apm
 puppet module install --force jamesnetherton-google_chrome
 puppet module install --force puppet-nodejs
+puppet module install --force puppetlabs-stdlib
+puppet module install --force camptocamp-archive
+puppet module install --force tylerwalts/jdk_oracle
+puppet module install --force maestrodev/wget

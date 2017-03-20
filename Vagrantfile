@@ -4,13 +4,34 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-# Install Required Vagrant Plugins
-required_plugins = %w( vagrant-hostsupdater vagrant-librarian-puppet )
-required_plugins.each do |plugin|
-  system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
-end
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # Install Required Vagrant Plugins
+  plugin_installed = false
+  required_plugins = %w( vagrant-hostsupdater vagrant-r10k vagrant-triggers )
+  if Vagrant.plugins_enabled?
+    required_plugins.each do |plugin|
+      unless Vagrant.has_plugin?("#{plugin}")
+        system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
+        plugin_installed = false # Vagrant prevents this from working: https://github.com/mitchellh/vagrant/issues/8063
+      end
+    end
+  end
+
+  ## Restart Vagrant: if new plugin installed
+  if plugin_installed == true
+    exec "vagrant #{ARGV.join(' ')}"
+  end
+
+  ## Create 'puppet/modules' directory for puppet provisioner(s)
+  #
+  #  :ALL, denotes the successive commands will be applied to all vagrant
+  #       commands.
+  #  -p, creates directory regardless if parent directories exist
+  config.trigger.before :ALL do
+    run "mkdir -p puppet/modules"
+  end
+
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
@@ -104,14 +125,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :shell, :path => "bootstrap.sh"
-
-
-
-  config.librarian_puppet.puppetfile_dir = "puppet"
-  config.librarian_puppet.placeholder_filename = ".gitkeep"
-  config.librarian_puppet.use_v1_api  = '1' # Check https://github.com/rodjek/librarian-puppet#how-to-use
-  config.librarian_puppet.destructive = false # Check https://github.com/rodjek/librarian-puppet#how-to-use
-  config.librarian_puppet.resolve_options = {:force => true}
+  config.r10k.puppetfile_path = "puppet/Puppetfile"
+  config.r10k.puppet_dir = "puppet"
 
   config.vm.provision :puppet do |puppet|
     puppet.hiera_config_path = "puppet/hiera.yaml"

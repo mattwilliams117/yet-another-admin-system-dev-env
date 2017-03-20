@@ -315,3 +315,9 @@ A few problems here:
     rvm use --default ruby-2.1.4
     ```
     Check http://stackoverflow.com/questions/26595620/how-to-install-ruby-2-1-4-on-ubuntu-14-04 for more details on the instructions above.
+
+#### 8. Error running vagrant up
+
+##### Workaround
+You can find a patch that must be applied to version 1.8.1 of vagrant:
+http://stackoverflow.com/questions/36811863/cant-install-vagrant-plugins-in-ubuntu-16-04/36991648#36991648
