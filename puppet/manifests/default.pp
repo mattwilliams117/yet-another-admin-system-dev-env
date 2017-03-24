@@ -37,6 +37,7 @@ package { 'mocha-test-runner':    ensure   => latest, provider => apm, require =
 package { 'react':                ensure   => latest, provider => apm, require => Package['atom'], }
 package { 'xml-formatter':        ensure   => latest, provider => apm, require => Package['atom'], }
 package { 'eclipse-keybindings':  ensure   => latest, provider => apm, require => Package['atom'], }
+package { 'to-base64':  ensure   => latest, provider => apm, require => Package['atom'], }
 
 exec { 'apm install react xml-formatter': }
 

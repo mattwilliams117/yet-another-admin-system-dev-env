@@ -81,7 +81,7 @@ OR
 ### Workarounds
 1. Install missing Atom plugins (Issues #5, #17)
 ````
-apm install language-puppet linter linter-eslint node-debugger mocha-test-runner react xml-formatter eclipse-keybindings split-diff
+apm install language-puppet linter linter-eslint node-debugger mocha-test-runner react xml-formatter eclipse-keybindings split-diff to-base64
 ````
 2. Add user to Docker group (Issue #16)
 ````
