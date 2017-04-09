@@ -73,10 +73,11 @@ OR
 ## Setup
 1. Install libraries to workaround Vargrant issues: `sudo apt install zlib1g-dev`
 2. Install Vagrant and Virtual Box: `sudo apt-get -y install vagrant virtualbox`
-3. clone the vagrant repo: `git clone https://github.com/jeromebridge/yet-another-admin-system-dev-env`
-4. change directory into the cloned repository: `cd yet-another-admin-system-dev-env`
-5. Start Vagrant: `vagrant up`
-6. After Vagrant has completed you should see a VirtualBox window open. Navigate to it and login using the credentials `vagrant / vagrant`
+3. Install Git `sudo apt-get install git`
+4. clone the vagrant repo: `git clone https://github.com/jeromebridge/yet-another-admin-system-dev-env`
+5. change directory into the cloned repository: `cd yet-another-admin-system-dev-env`
+6. Start Vagrant: `vagrant up`
+7. After Vagrant has completed you should see a VirtualBox window open. Navigate to it and login using the credentials `vagrant / vagrant`
 
 ### Workarounds
 1. Install missing Atom plugins (Issues #5, #17)
