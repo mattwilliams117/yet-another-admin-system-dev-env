@@ -5,9 +5,18 @@
 VAGRANTFILE_API_VERSION = "2"
 
 # Install Required Vagrant Plugins
-required_plugins = %w( vagrant-hostsupdater vagrant-librarian-puppet )
+plugin_installed = false
+required_plugins = %w( vagrant-hostsupdater vagrant-r10k )
 required_plugins.each do |plugin|
-  system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
+  unless Vagrant.has_plugin? plugin
+    system "vagrant plugin install #{plugin}"
+    plugin_installed = true
+  end
+end
+
+## Restart Vagrant: if new plugin installed
+if plugin_installed == true
+  exec "vagrant #{ARGV.join(' ')}"
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -107,11 +116,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
 
-  config.librarian_puppet.puppetfile_dir = "puppet"
-  config.librarian_puppet.placeholder_filename = ".gitkeep"
-  config.librarian_puppet.use_v1_api  = '1' # Check https://github.com/rodjek/librarian-puppet#how-to-use
-  config.librarian_puppet.destructive = false # Check https://github.com/rodjek/librarian-puppet#how-to-use
-  config.librarian_puppet.resolve_options = {:force => true}
+  config.r10k.puppetfile_dir = "puppet"
+  config.r10k.placeholder_filename = ".gitkeep"
 
   config.vm.provision :puppet do |puppet|
     puppet.hiera_config_path = "puppet/hiera.yaml"

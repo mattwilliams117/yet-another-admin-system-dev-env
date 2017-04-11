@@ -71,6 +71,26 @@ include 'google_chrome'
 package { 'gpgv2':  ensure  => latest, require  => Exec['apt-get update'], }
 package { 'rultor': ensure => 'installed', provider => 'gem', }
 
+# Drone CLI
+class drone_cli {
+  archive::download { 'drone.tar.gz':
+    url              => "http://downloads.drone.io/release/linux/amd64/drone.tar.gz",
+    ensure           => present,
+    checksum         => false,
+    follow_redirects => true,
+    timeout          => 2120,
+  } ->
+  exec { 'drone extract':
+    cwd       => "/usr/src",
+    command   => "tar zx -f drone.tar.gz",
+  } ->
+  exec { 'drone install':
+    cwd       => "/usr/src",
+    command   => "install -t /usr/local/bin drone",
+  }
+}
+include drone_cli
+
 # Codeship Jet
 class codeship_jet {
   archive::download { 'jet-linux_amd64_1.15.4.tar.gz':
