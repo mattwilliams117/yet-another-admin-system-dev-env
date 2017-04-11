@@ -74,15 +74,16 @@ OR
 ## Setup
 1. Install libraries to workaround Vargrant issues: `sudo apt install zlib1g-dev`
 2. Install Vagrant and Virtual Box: `sudo apt-get -y install vagrant virtualbox`
-3. clone the vagrant repo: `git clone https://github.com/jeromebridge/yet-another-admin-system-dev-env`
-4. change directory into the cloned repository: `cd yet-another-admin-system-dev-env`
-5. Start Vagrant: `vagrant up`
-6. After Vagrant has completed you should see a VirtualBox window open. Navigate to it and login using the credentials `vagrant / vagrant`
+3. Install Git `sudo apt-get install git`
+4. clone the vagrant repo: `git clone https://github.com/jeromebridge/yet-another-admin-system-dev-env`
+5. change directory into the cloned repository: `cd yet-another-admin-system-dev-env`
+6. Start Vagrant: `vagrant up`
+7. After Vagrant has completed you should see a VirtualBox window open. Navigate to it and login using the credentials `vagrant / vagrant`
 
 ### Workarounds
 1. Install missing Atom plugins (Issues #5, #17)
 ````
-apm install language-puppet linter linter-eslint node-debugger mocha-test-runner react xml-formatter eclipse-keybindings split-diff
+apm install language-puppet linter linter-eslint node-debugger mocha-test-runner react xml-formatter eclipse-keybindings split-diff to-base64
 ````
 2. Add user to Docker group (Issue #16)
 ````
@@ -98,9 +99,7 @@ vagrant reload
 ````
 
 ### UI Development
-1. Run the Yaas backend Service:
-    1. Make temp directory for Yaas: `mkdir /tmp/yaas`
-    2. Download and Run Yaas Docker image: `sudo docker run -d --name=app --link db:db -p 8081:8080 -v /tmp/yaas:/working jeromebridge/yet-another-admin-system`
+1. Run the Yaas backend Service: See `Docker Only` section
 2. Clone the UI project: `git clone https://github.com/jeromebridge/yet-another-admin-system-web.git`
 3. Change directory to project: `cd yet-another-admin-system-web`
 4. Install UI Dependencies: `npm install`
@@ -165,7 +164,7 @@ output=json
 ````
 4. Initialize Docker
 ````
-eval "$(docker run --volume ~/.aws:/root/.aws cgswong/aws:latest aws ecr get-login)"
+eval "$(docker run --rm --volume ~/.aws:/root/.aws cgswong/aws:latest aws ecr get-login)"
 ````
 5. Stop All
 ````
@@ -174,11 +173,11 @@ docker stop front; docker rm front; docker stop app; docker rm app; docker stop 
 5. Start Containers
 ````
 docker stop db; docker rm db;
-docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:master-d5147492115ddb39282faf73e424be41
-docker run -d --name=db -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:master-d5147492115ddb39282faf73e424be41
+docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
+docker run -d --name=db -p 5432:5432 -e POSTGRES_USER="super" -e POSTGRES_DB="yaas" -e POSTGRES_PASSWORD="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
 docker stop app; docker rm app;
 docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
-docker run -d --name=app --link db:db -p 8081:8080 -p 8001:8000 -p 11099:11099 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
+docker run -d --name=app --link db:db -p 8081:8080 -p 8001:8000 -p 21099:11099 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
 docker stop front; docker rm front;
 docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
 docker run -d --name=front --link app:app -p 8082:8080 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
@@ -207,6 +206,10 @@ Unknown configuration section 'librarian_puppet'.
 ````
 ##### Workaround
 1. Rerun the `vagrant up` command again.
+
+##### Possible Fix
+I may have found a workaround to this issue. Vagrant needs to be restarted if the plugin is installed.
+https://github.com/voxpupuli/vagrant-librarian-puppet/issues/6
 
 #### 3. Vagrant Finishes With Non-Zero Return
 ````
@@ -291,6 +294,7 @@ Vagrant:
 * Unknown configuration section 'librarian_puppet'.
 ```
 A few problems here:
+
 1. Install `ruby-dev`
     ```
     sudo apt-get install ruby-dev
@@ -313,3 +317,9 @@ A few problems here:
     rvm use --default ruby-2.1.4
     ```
     Check http://stackoverflow.com/questions/26595620/how-to-install-ruby-2-1-4-on-ubuntu-14-04 for more details on the instructions above.
+
+#### 8. Error running vagrant up
+
+##### Workaround
+You can find a patch that must be applied to version 1.8.1 of vagrant:
+http://stackoverflow.com/questions/36811863/cant-install-vagrant-plugins-in-ubuntu-16-04/36991648#36991648
