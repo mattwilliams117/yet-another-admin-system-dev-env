@@ -18,6 +18,9 @@ package { "gimp":  ensure  => latest, require  => Exec['apt-get update'], }
 # Meld
 package { "meld":  ensure  => latest, require  => Exec['apt-get update'], }
 
+# Disk Space Analyzer
+package { "baobab":  ensure  => latest, require  => Exec['apt-get update'], }
+
 # Launch4J Supporting Libraries
 # package { ['lib32z1', 'lib32ncurses5', 'lib32bz2-1.0']:  ensure => latest, } # 14.04 version
 package { ['libz1:i386', 'libncurses5:i386', 'libbz2-1.0:i386', 'libstdc++6:i386']:  ensure => latest, } # 16.04 version
