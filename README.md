@@ -29,7 +29,7 @@ Vagrant configuraiton for Yet Another Admin System development environment.
 * <del>Ruby (in order to run `rultor` command)</del>
 * <del>Rultor (Ruby Gem)</del>
 * <del>gnugp2 (Public/Private Keys) ; Force alias to gpg2 so rultor works: https://wiki.debian.org/Teams/GnuPG/UsingGnuPGv2</del>
-* Yaas CLI
+* <del>Yaas CLI</del> <sup>* Run the CLI through the Docker image</sup>
 * Kdenlive (for video editing)?
 * <del>Drone CLI</del>
 * <del>Graylog</del> Lilith (http://lilith.huxhorn.de/)
@@ -151,27 +151,27 @@ Sometimes the Database docker app goes down. In this case you have to tell docke
 #### Setup AWS
 1. Create a directory `~/.aws`
 2. Create a file `~/.aws/credentials`
-````
+```
 [default]
 aws_access_key_id=XXX
 aws_secret_access_key=XXX
-````
+```
 3. Create a file `~/.aws/config`
-````
+```
 [default]
 region=us-east-1
 output=json
-````
+```
 4. Initialize Docker
-````
+```shell
 eval "$(docker run --rm --volume ~/.aws:/root/.aws cgswong/aws:latest aws ecr get-login)"
-````
+```
 5. Stop All
-````
+```shell
 docker stop front; docker rm front; docker stop app; docker rm app; docker stop db; docker rm db;
-````
+```
 5. Start Containers
-````
+```shell
 docker stop db; docker rm db;
 docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
 docker run -d --name=db -p 5432:5432 -e POSTGRES_USER="super" -e POSTGRES_DB="yaas" -e POSTGRES_PASSWORD="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
@@ -181,7 +181,12 @@ docker run -d --name=app --link db:db -p 8081:8080 -p 8001:8000 -p 21099:11099 1
 docker stop front; docker rm front;
 docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
 docker run -d --name=front --link app:app -p 8082:8080 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
-````
+```
+6. Run CLI
+```shell
+docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-cli:develop
+docker run --rm 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-cli:develop
+```
 
 ### Known Issues
 #### 1. The configured module path doesn't exist: /home/user1/yet-another-admin-system-dev-env/puppet/modules
