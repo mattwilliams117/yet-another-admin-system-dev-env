@@ -173,14 +173,14 @@ docker stop front; docker rm front; docker stop app; docker rm app; docker stop 
 5. Start Containers
 ```shell
 docker stop db; docker rm db;
-docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
-docker run -d --name=db -p 5432:5432 -e POSTGRES_USER="super" -e POSTGRES_DB="yaas" -e POSTGRES_PASSWORD="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:latest
+docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:develop
+docker run -d --name=db -p 5432:5432 -e POSTGRES_USER="super" -e POSTGRES_DB="yaas" -e POSTGRES_PASSWORD="postgres" 168745904620.dkr.ecr.us-east-1.amazonaws.com/postgresql:develop
 docker stop app; docker rm app;
-docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
-docker run -d --name=app --link db:db -p 8081:8080 -p 8001:8000 -p 21099:11099 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:latest
+docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:develop
+docker run -d --name=app --link db:db -p 8081:8080 -p 8001:8000 -p 21099:11099 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system:develop
 docker stop front; docker rm front;
-docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
-docker run -d --name=front --link app:app -p 8082:8080 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:latest
+docker pull 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:develop
+docker run -d --name=front --link app:app -p 8082:8080 168745904620.dkr.ecr.us-east-1.amazonaws.com/yet-another-admin-system-web:develop
 ```
 6. Run CLI
 ```shell
