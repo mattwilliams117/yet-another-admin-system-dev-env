@@ -51,11 +51,11 @@ sudo apt-get install -y docker.io
 #   sudo docker run -d --name=$CONTAINER -p 5432:5432 -e USER="super" -e DB="yaas" -e PASS="postgres" -e POSTGRES_PASS="postgres" pennassurancesoftware/postgresql
 # fi
 
-puppet module install --force puppetlabs-apt;
-puppet module install --force garethr/docker;
-puppet module install --force cyberious/apm
-puppet module install --force jamesnetherton-google_chrome
-puppet module install --force puppet-nodejs
+puppet module install --force puppetlabs-apt --version 2.4.0;
+puppet module install --force garethr/docker --version 5.3.0;
+puppet module install --force cyberious/apm --version 0.1.1;
+puppet module install --force jamesnetherton-google_chrome --version 0.2.6;
+puppet module install --force puppet-nodejs --version 2.3.0;
 puppet module install --force puppetlabs-stdlib
 puppet module install --force camptocamp-archive
 puppet module install --force tylerwalts/jdk_oracle
