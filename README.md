@@ -82,21 +82,24 @@ OR
 
 ### Workarounds
 1. Install missing Atom plugins (Issues #5, #17)
-````
+```
 apm install language-puppet linter linter-eslint node-debugger mocha-test-runner react xml-formatter eclipse-keybindings split-diff to-base64
-````
+```
 2. Add user to Docker group (Issue #16)
-````
+```
 sudo usermod -aG docker $USER
-````
+```
 3. Increase Max Number Of Files That Can Be Monitored (Issue #11)
-````
+```
 echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-````
+```
 4. Reload vagrant (Issue #11) -- from host machine
-````
+```
 vagrant reload
-````
+```
+5. Eclipse settings (Issues #23, #13)
+    
+    Update the `/opt/eclipse/eclipse.ini` file based on the listed issues above.
 
 ### UI Development
 1. Run the Yaas backend Service: See `Docker Only` section
