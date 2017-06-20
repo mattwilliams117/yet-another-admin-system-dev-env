@@ -103,8 +103,8 @@ vagrant reload
 
 ### UI Development
 1. Run the Yaas backend Service: See `Docker Only` section
-2. Clone the UI project: `git clone https://github.com/jeromebridge/yet-another-admin-system-web.git`
-3. Change directory to project: `cd yet-another-admin-system-web`
+2. Clone the project: `git clone https://github.com/jeromebridge/yet-another-admin-system.git`
+3. Change directory to project: `cd yet-another-admin-system-web` then `cd web`
 4. Install UI Dependencies: `npm install`
 5. Run the UI: `export INTEGRATED=true; export YAASURL=http://localhost:8081; npm run dev`
 6. Setup the Editor. Open `Atom`
@@ -129,7 +129,7 @@ Sometimes the Database docker app goes down. In this case you have to tell docke
 
 ### Backend Development
 1. Clone the Backend project: `git clone https://github.com/jeromebridge/yet-another-admin-system.git`
-2. Change directory to the project: `cd yet-another-admin-system`
+2. Change directory to the project: `cd yet-another-admin-system` then `cd api`
 3. Maven build: `mvn clean install`
 4. Open Eclipse
     1. Switch to `Git` perspective
